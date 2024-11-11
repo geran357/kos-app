@@ -1,0 +1,44 @@
+/* Gaya untuk header */
+.header {
+    background-color: #afafaf; /* Warna latar belakang */
+    color: white; /* Warna teks */
+    display: flex;
+    width: 100%; /* Mengubah lebar menjadi 100% agar responsif */
+    max-width: 1800px; /* Menetapkan lebar maksimum */
+    height: 75px;
+    padding: 0 10%; /* Menggunakan padding yang lebih fleksibel */
+    align-items: center;
+    justify-content: space-between; /* Mengatur jarak antar elemen */
+    flex-shrink: 0;
+    }
+    
+    /* Gaya untuk navbar */
+    .navbar {
+      margin-top: 10px; /* Jarak atas navbar */
+    }
+    
+    /* Gaya untuk daftar link */
+    .nav-links {
+      list-style-type: none; /* Menghilangkan bullet points */
+      padding: 0; /* Menghilangkan padding */
+      display: flex; /* Menyusun item dalam baris */
+      justify-content: center; /* Rata tengah */
+    }
+    
+    /* Gaya untuk setiap link */
+    .nav-links li {
+      margin: 0 15px; /* Jarak antara item */
+    }
+    
+    /* Gaya untuk tautan */
+    .nav-links a {
+      color: white; /* Warna teks tautan */
+      text-decoration: none; /* Menghilangkan garis bawah */
+      font-weight: bold; /* Menebalkan teks */
+      transition: color 0.3s; /* Transisi warna saat hover */
+    }
+    
+    /* Gaya untuk tautan saat hover */
+    .nav-links a:hover {
+      color: #ffdd57; /* Warna saat hover */
+    }

@@ -1,0 +1,64 @@
+/* RoomCard.css */
+.room-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+  width: 300px; /* Atur lebar maksimum kartu */
+  height: 400px; /* Atur tinggi maksimum kartu */
+  overflow: hidden; /* Sembunyikan konten yang melampaui batas */
+}
+
+.room-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.room-header {
+  font-size: 1.5em;
+  margin-bottom: 90px;
+  color: #333;
+  justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.room-details {
+  text-align: left;
+  margin-bottom: 16px;
+  flex-grow: 1; /* Memungkinkan detail untuk mengisi ruang yang tersisa */
+  color: #000;
+  font-family: Gilroy-SemiBold;
+  font-size: 18.259px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 100px;
+}
+
+.detail-button {
+  background-color: #1ABC9C;
+  color: white;
+  border: none;
+  padding: 11.816px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  gap: 11.816px;
+  align-items: center; /* Untuk membuat konten di tengah secara vertikal */
+  justify-content: center; /* Untuk membuat konten di tengah secara horizontal */
+  width: 100%; /* Memanjang ke seluruh lebar container */
+  max-width: 464px; /* Batas lebar maksimum tombol */
+}
+
+.detail-button:hover {
+  background-color: #0056b3;
+}
+
+.room-grid {
+  display: grid; /* Menggunakan flexbox */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px
+}
