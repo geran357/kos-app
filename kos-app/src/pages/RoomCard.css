@@ -6,9 +6,10 @@
   padding: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s;
-  width: 300px; /* Atur lebar maksimum kartu */
+  width: 500px; /* Atur lebar maksimum kartu */
   height: 400px; /* Atur tinggi maksimum kartu */
   overflow: hidden; /* Sembunyikan konten yang melampaui batas */
+
 }
 
 .room-card:hover {
