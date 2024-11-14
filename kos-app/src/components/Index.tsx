@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "../App";
+import App from "../components/App";
 
 // Temukan elemen root di dalam index.html
 const root = ReactDOM.createRoot(
