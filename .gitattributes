@@ -1,0 +1,9 @@
+ECHO is on.
+# Mengatur semua file teks untuk menggunakan LF
+* text=auto
+
+# Mengatur file tertentu untuk menggunakan CRLF
+*.bat text eol=crlf
+
+# Mengatur file tertentu untuk menggunakan LF
+*.sh text eol=lf
