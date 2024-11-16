@@ -1,41 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import "../pages/Register.css"; // Importing CSS for styling
+import axios, { AxiosError } from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SimpleRegistrationForm = () => {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // Prevent page reload
+  // State untuk input dan pesan
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
-    const username = event.currentTarget.username.value;
-    const password = event.currentTarget.password.value;
-    const confirmPassword = event.currentTarget.confirmPassword.value;
+  const navigate = useNavigate(); // Inisialisasi navigate
 
-    // Simple validation for password confirmation
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent page reload
+
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
 
-    const userData = {
-      username,
-      password, // Ensure to hash or encrypt the password before sending it to the server
-    };
+    try {
+      const response = await axios.post(
+        "http://localhost:1337/auth/local/register",
+        {
+          username,
+          email,
+          password,
+        }
+      );
 
-    // Sending data to server
-    fetch("URL_API_ENDPOINT", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        // Handle success (e.g., redirect or show success message)
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+      setSuccessMessage("User registered successfully!");
+      setErrorMessage("");
+
+      // Redirect ke halaman login setelah sukses
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000); // Tunggu 2 detik sebelum redirect
+
+      console.log(response.data); // Log data untuk debugging
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        setErrorMessage(error.response?.data?.message || "Registration failed");
+      } else {
+        setErrorMessage("An unexpected error occurred");
+      }
+      setSuccessMessage("");
+    }
   };
 
   return (
@@ -51,6 +64,21 @@ const SimpleRegistrationForm = () => {
               name="username"
               placeholder="Enter your username"
               required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -62,6 +90,8 @@ const SimpleRegistrationForm = () => {
               name="password"
               placeholder="Enter your password"
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
@@ -73,11 +103,15 @@ const SimpleRegistrationForm = () => {
               name="confirmPassword"
               placeholder="Confirm your password"
               required
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
 
           <button type="submit">Register</button>
         </form>
+        {successMessage && <p>{successMessage}</p>}
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </main>
     </div>
   );
