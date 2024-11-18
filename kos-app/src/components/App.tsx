@@ -4,6 +4,7 @@ import Home from "../pages/Home"; // Untuk Home
 import Login from "../pages/Login"; // Untuk Login
 import "./App.css";
 import "./Navbar.css"; // Mengimpor Navbar.css
+import WelcomePage from '../pages/pages_beranda_user/penghuniWelcome'; 
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/penghniWelcome" element={<WelcomePage />} />
         </Routes>
 
         <footer>
