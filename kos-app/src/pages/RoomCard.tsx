@@ -24,7 +24,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
       <Link to="/login">
         {" "}
         {/* Pastikan URL sesuai dengan rute yang ada */}
-        <button className="detail-button">Detail</button>
+        <button className="detail-button">LogIn</button>
       </Link>
     </div>
   );
