@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Pastikan untuk mengimpor Link
 import "./RoomCard.css"; // Pastikan file CSS ada
 
 interface RoomCardProps {
@@ -19,7 +20,12 @@ const RoomCard: React.FC<RoomCardProps> = ({
         <p>Status: {status}</p>
         <p>Penghuni: {occupant}</p>
       </div>
-      <button className="detail-button">Detail</button>
+
+      <Link to="/login">
+        {" "}
+        {/* Pastikan URL sesuai dengan rute yang ada */}
+        <button className="detail-button">Detail</button>
+      </Link>
     </div>
   );
 };
