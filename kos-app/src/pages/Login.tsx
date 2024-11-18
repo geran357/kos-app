@@ -1,14 +1,13 @@
-// Login.tsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate untuk navigasi
-import { loginUser } from "../pages/Data/LoginUser"; // Mengimport fungsi loginUser
-import "../pages/Login.css"; // Mengimport CSS login
+import { useNavigate } from "react-router-dom"; // Mengimpor useNavigate untuk navigasi
+import { loginUser } from "../pages/Data/LoginUser"; // Mengimpor fungsi loginUser
+import "../pages/Login.css"; // Mengimpor CSS untuk halaman login
 
 const Login: React.FC = () => {
-  const [identifier, setIdentifier] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [error, setError] = useState<string>(""); // State untuk menyimpan pesan error
-  const navigate = useNavigate(); // Inisialisasi useNavigate
+  const [identifier, setIdentifier] = useState<string>(""); // Menyimpan username/email
+  const [password, setPassword] = useState<string>(""); // Menyimpan password
+  const [error, setError] = useState<string>(""); // Menyimpan pesan error
+  const navigate = useNavigate(); // Menggunakan useNavigate untuk navigasi
 
   const handleLogin = async (): Promise<void> => {
     if (!identifier || !password) {
@@ -16,28 +15,27 @@ const Login: React.FC = () => {
       return;
     }
 
-    // Panggil fungsi loginUser  dengan 2 argumen: identifier dan password
+    // Panggil fungsi loginUser untuk autentikasi
     const result = await loginUser(identifier, password);
 
-    // Jika ada error, set error state
+    // Jika ada error, tampilkan pesan error
     if (result.error) {
       setError(result.error);
       return;
     }
 
-    // Jika login berhasil, navigasi ke halaman berikutnya
+    // Jika login berhasil, arahkan pengguna ke halaman berikutnya
     navigate("/penghuniWelcome"); // Ganti dengan route yang sesuai
   };
 
   const handleForgotPassword = (): void => {
-    navigate("/forgot-password"); // Ubah sesuai dengan route yang diinginkan
+    navigate("/forgot-password"); // Navigasi ke halaman lupa password
   };
 
   return (
     <div className="login-container">
       <h2 className="login-title">Login</h2>
-      {error && <p className="error-message">{error}</p>}{" "}
-      {/* Tampilkan pesan error jika ada */}
+      {error && <p className="error-message">{error}</p>} {/* Menampilkan pesan error */}
       <div className="input-container">
         <div className="icon">
           <img

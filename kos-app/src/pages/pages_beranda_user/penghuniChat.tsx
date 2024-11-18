@@ -1,2 +1,12 @@
+// Di dalam penghuniWelcome.tsx
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+const PenghuniWelcome = () => {
+  return (
+    <div>
+      <h1>chetan disini</h1>
+    </div>
+  );
+};
+
+export default PenghuniWelcome;

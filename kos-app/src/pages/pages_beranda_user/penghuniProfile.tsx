@@ -4,7 +4,7 @@ import React from "react";
 const PenghuniWelcome = () => {
   return (
     <div>
-      <h1>pembayaran disini</h1>
+      <h1>profile</h1>
     </div>
   );
 };

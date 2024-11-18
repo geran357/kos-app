@@ -4,7 +4,7 @@ import Home from "../pages/Home"; // Untuk Home
 import Login from "../pages/Login"; // Untuk Login
 import "./App.css";
 import "./Navbar.css"; // Mengimpor Navbar.css
-import WelcomePage from '../pages/pages_beranda_user/penghuniWelcome'; 
+import WelcomePage from "../pages/pages_beranda_user/penghuniWelcome";
 
 const App: React.FC = () => {
   return (
@@ -13,14 +13,20 @@ const App: React.FC = () => {
         <header className="header">
           <h1>MiminKost</h1>
           <nav className="navbar">
-            <ul className="nav-links"></ul>
+            <ul className="nav-links">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+             
+            </ul>{" "}
+            {/* Close the ul tag here */}
           </nav>
         </header>
 
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/penghniWelcome" element={<WelcomePage />} />
+          <Route path="/penghuniWelcome" element={<WelcomePage />} />
         </Routes>
 
         <footer>
