@@ -28,8 +28,8 @@ const getAttributeType = (attributeName, attribute, uid) => {
 
   const [attributeType, typeParams] = mappers[attribute.type]({ uid, attribute, attributeName });
 
-  // Make sure the schema namespace is imported
-  addImport(NAMESPACES.Schema);
+  // Make sure the attribute namespace is imported
+  addImport(NAMESPACES.attribute);
 
   return getTypeNode(attributeType, typeParams);
 };
@@ -151,8 +151,8 @@ const getAttributeModifiers = (attribute) => {
     );
   }
 
-  // Default (ignore if default is a function)
-  if (!_.isNil(attribute.default) && !_.isFunction(attribute.default)) {
+  // Default
+  if (!_.isNil(attribute.default)) {
     const defaultLiteral = toTypeLiteral(attribute.default);
 
     modifiers.push(
@@ -195,4 +195,6 @@ const attributeToPropertySignature = (schema, attributeName, attribute) => {
 
 module.exports = attributeToPropertySignature;
 
-Object.assign(module.exports, { mappers, getAttributeModifiers, getAttributeType });
+module.exports.mappers = mappers;
+module.exports.getAttributeType = getAttributeType;
+module.exports.getAttributeModifiers = getAttributeModifiers;

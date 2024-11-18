@@ -47,7 +47,7 @@ module.exports = {
   decimal() {
     return [withAttributeNamespace('Decimal')];
   },
-  uid({ attribute }) {
+  uid({ attribute, uid }) {
     const { targetField, options } = attribute;
 
     // If there are no params to compute, then return the attribute type alone
@@ -58,15 +58,18 @@ module.exports = {
     const params = [];
 
     // If the targetField property is defined, then reference it,
-    // otherwise, put `undefined` keyword type node as placeholder
-    const targetFieldParam = _.isUndefined(targetField)
-      ? factory.createKeywordTypeNode(ts.SyntaxKind.UndefinedKeyword)
-      : factory.createStringLiteral(targetField);
+    // otherwise, put `undefined` keyword type nodes as placeholders
+    const targetFieldParams = _.isUndefined(targetField)
+      ? [
+          factory.createKeywordTypeNode(ts.SyntaxKind.UndefinedKeyword),
+          factory.createKeywordTypeNode(ts.SyntaxKind.UndefinedKeyword),
+        ]
+      : [factory.createStringLiteral(uid), factory.createStringLiteral(targetField)];
 
-    params.push(targetFieldParam);
+    params.push(...targetFieldParams);
 
     // If the options property is defined, transform it to
-    // a type literal node and add it to the params list
+    // a type literral node and add it to the params list
     if (_.isObject(options)) {
       params.push(toTypeLiteral(options));
     }
@@ -108,18 +111,25 @@ module.exports = {
 
     return [withAttributeNamespace('Media'), params];
   },
-  relation({ attribute }) {
+  relation({ uid, attribute }) {
     const { relation, target } = attribute;
 
     const isMorphRelation = relation.toLowerCase().includes('morph');
 
     if (isMorphRelation) {
-      return [withAttributeNamespace('Relation'), [factory.createStringLiteral(relation, true)]];
+      return [
+        withAttributeNamespace('Relation'),
+        [factory.createStringLiteral(uid, true), factory.createStringLiteral(relation, true)],
+      ];
     }
 
     return [
       withAttributeNamespace('Relation'),
-      [factory.createStringLiteral(relation, true), factory.createStringLiteral(target, true)],
+      [
+        factory.createStringLiteral(uid, true),
+        factory.createStringLiteral(relation, true),
+        factory.createStringLiteral(target, true),
+      ],
     ];
   },
   component({ attribute }) {
@@ -128,8 +138,6 @@ module.exports = {
 
     if (attribute.repeatable) {
       params.push(factory.createTrue());
-    } else {
-      params.push(factory.createFalse());
     }
 
     return [withAttributeNamespace('Component'), params];

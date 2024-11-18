@@ -14,9 +14,10 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-11-16T03:40:04.064Z"
+    "x-generation-date": "2024-11-16T13:14:36.586Z"
   },
   "x-strapi-config": {
+    "path": "/documentation",
     "plugins": [
       "upload",
       "users-permissions"
@@ -37,6 +38,261 @@
       "bearerAuth": []
     }
   ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "data": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            ]
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "details": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "UploadFile": {
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "alternativeText": {
+            "type": "string"
+          },
+          "caption": {
+            "type": "string"
+          },
+          "width": {
+            "type": "number",
+            "format": "integer"
+          },
+          "height": {
+            "type": "number",
+            "format": "integer"
+          },
+          "formats": {
+            "type": "number"
+          },
+          "hash": {
+            "type": "string"
+          },
+          "ext": {
+            "type": "string"
+          },
+          "mime": {
+            "type": "string"
+          },
+          "size": {
+            "type": "number",
+            "format": "double"
+          },
+          "url": {
+            "type": "string"
+          },
+          "previewUrl": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "provider_metadata": {
+            "type": "object"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Users-Permissions-Role": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Users-Permissions-User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "username": {
+            "type": "string",
+            "example": "foo.bar"
+          },
+          "email": {
+            "type": "string",
+            "example": "foo.bar@strapi.io"
+          },
+          "provider": {
+            "type": "string",
+            "example": "local"
+          },
+          "confirmed": {
+            "type": "boolean",
+            "example": true
+          },
+          "blocked": {
+            "type": "boolean",
+            "example": false
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-06-02T08:32:06.258Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-06-02T08:32:06.267Z"
+          }
+        }
+      },
+      "Users-Permissions-UserRegistration": {
+        "type": "object",
+        "properties": {
+          "jwt": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+          },
+          "user": {
+            "$ref": "#/components/schemas/Users-Permissions-User"
+          }
+        }
+      },
+      "Users-Permissions-PermissionsTree": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "description": "every api",
+          "properties": {
+            "controllers": {
+              "description": "every controller of the api",
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": {
+                  "description": "every action of every controller",
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "policy": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "Users-Permissions-RoleRequest": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "permissions": {
+                  "$ref": "#/components/schemas/Users-Permissions-PermissionsTree"
+                }
+              }
+            },
+            "example": {
+              "name": "foo",
+              "description": "role foo",
+              "permissions": {
+                "api::content-type.content-type": {
+                  "controllers": {
+                    "controllerA": {
+                      "find": {
+                        "enabled": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "paths": {
     "/upload": {
       "post": {
@@ -1434,261 +1690,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
-      }
-    },
-    "schemas": {
-      "Error": {
-        "type": "object",
-        "required": [
-          "error"
-        ],
-        "properties": {
-          "data": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "object"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              }
-            ]
-          },
-          "error": {
-            "type": "object",
-            "properties": {
-              "status": {
-                "type": "integer"
-              },
-              "name": {
-                "type": "string"
-              },
-              "message": {
-                "type": "string"
-              },
-              "details": {
-                "type": "object"
-              }
-            }
-          }
-        }
-      },
-      "UploadFile": {
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "name": {
-            "type": "string"
-          },
-          "alternativeText": {
-            "type": "string"
-          },
-          "caption": {
-            "type": "string"
-          },
-          "width": {
-            "type": "number",
-            "format": "integer"
-          },
-          "height": {
-            "type": "number",
-            "format": "integer"
-          },
-          "formats": {
-            "type": "number"
-          },
-          "hash": {
-            "type": "string"
-          },
-          "ext": {
-            "type": "string"
-          },
-          "mime": {
-            "type": "string"
-          },
-          "size": {
-            "type": "number",
-            "format": "double"
-          },
-          "url": {
-            "type": "string"
-          },
-          "previewUrl": {
-            "type": "string"
-          },
-          "provider": {
-            "type": "string"
-          },
-          "provider_metadata": {
-            "type": "object"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
-      "Users-Permissions-Role": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
-      "Users-Permissions-User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "example": 1
-          },
-          "username": {
-            "type": "string",
-            "example": "foo.bar"
-          },
-          "email": {
-            "type": "string",
-            "example": "foo.bar@strapi.io"
-          },
-          "provider": {
-            "type": "string",
-            "example": "local"
-          },
-          "confirmed": {
-            "type": "boolean",
-            "example": true
-          },
-          "blocked": {
-            "type": "boolean",
-            "example": false
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-06-02T08:32:06.258Z"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-06-02T08:32:06.267Z"
-          }
-        }
-      },
-      "Users-Permissions-UserRegistration": {
-        "type": "object",
-        "properties": {
-          "jwt": {
-            "type": "string",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-          },
-          "user": {
-            "$ref": "#/components/schemas/Users-Permissions-User"
-          }
-        }
-      },
-      "Users-Permissions-PermissionsTree": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "object",
-          "description": "every api",
-          "properties": {
-            "controllers": {
-              "description": "every controller of the api",
-              "type": "object",
-              "additionalProperties": {
-                "type": "object",
-                "additionalProperties": {
-                  "description": "every action of every controller",
-                  "type": "object",
-                  "properties": {
-                    "enabled": {
-                      "type": "boolean"
-                    },
-                    "policy": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "requestBodies": {
-      "Users-Permissions-RoleRequest": {
-        "required": true,
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "type": {
-                  "type": "string"
-                },
-                "permissions": {
-                  "$ref": "#/components/schemas/Users-Permissions-PermissionsTree"
-                }
-              }
-            },
-            "example": {
-              "name": "foo",
-              "description": "role foo",
-              "permissions": {
-                "api::content-type.content-type": {
-                  "controllers": {
-                    "controllerA": {
-                      "find": {
-                        "enabled": true
-                      }
-                    }
-                  }
                 }
               }
             }
