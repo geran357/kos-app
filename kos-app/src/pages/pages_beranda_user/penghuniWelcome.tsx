@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./css/penghuniWelcome.css";
 
 const PenghuniWelcome: React.FC = () => {
   const [username, setUsername] = useState<string>("");
+  const navigate = useNavigate(); // Inisialisasi useNavigate
 
   useEffect(() => {
     // Ambil data pengguna dari localStorage setelah login
     const savedUsername = localStorage.getItem("username");
-    if (savedUsername) {
-      setUsername(savedUsername); // Set username yang diambil dari localStorage
-    }
+    setUsername(savedUsername || "Guest"); // Set default jika tidak ada username
   }, []);
 
   return (
@@ -18,40 +18,52 @@ const PenghuniWelcome: React.FC = () => {
         <div className="profile-section">
           <div className="profile-picture"></div>
           <div className="profile-info">
-            <p className="name">{username || "Guest"}</p>{" "}
-            {/* Tampilkan username atau "Guest" */}
+            <p className="name">{username}</p>
             <p className="role">Penghuni kos</p>
           </div>
         </div>
 
         <nav className="menu">
           <ul>
-            <li>📊 Dasbor</li>
-            <li>👤 Profil Saya</li>
-            <li className="menu-section">KEUANGAN</li>
-            <li>💲 Pembayaran</li>
+            <li>
+              <button onClick={() => navigate("/")}>📊 Dasbor</button>
+            </li>
+            <li>
+              <button onClick={() => navigate("/penghuniProfile")}>
+                👤 Profil Saya
+              </button>
+            </li>
+            <li className="menu-section">Keuangan</li>
+            <li>
+              <button onClick={() => navigate("/penghuniPembayaran")}>
+                💲 Pembayaran
+              </button>
+            </li>
             <li className="menu-section">Tugas</li>
-            <li>✅ Tugas Saya</li>
+            <li>
+              <button onClick={() => navigate("/penghuniTugas")}>
+                ✅ Tugas Saya
+              </button>
+            </li>
             <li className="menu-section">Chat</li>
-            <li>✅ Chat dengan IbuKos</li>
+            <li>
+              <button onClick={() => navigate("/penghuniChat")}>
+                💬 Chat dengan IbuKos
+              </button>
+            </li>
           </ul>
         </nav>
       </aside>
 
       <main className="main-content">
         <header className="topbar">
-          <p>Hi, {username || "Guest"}</p>{" "}
-          {/* Tampilkan username atau "Guest" */}
+          <p>Hi, {username}</p>
         </header>
 
         <div className="content">
           <div className="background">
-            <div className="chair"></div>{" "}
-            {/* Tambahkan gambar atau konten lain */}
+            <p>Selamat datang di platform penghuni kos!</p>
           </div>
-
-          <section className="dashboard">
-          </section>
         </div>
       </main>
     </div>

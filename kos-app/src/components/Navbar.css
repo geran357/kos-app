@@ -1,44 +1,72 @@
 /* Gaya untuk header */
+.header-wrapper {
+  width: 100%;
+  background-color: #afafaf; /* Warna latar belakang penuh */
+  display: flex; /* Menggunakan flex untuk centering */
+  justify-content: center; /* Centering horizontal */
+  padding: 0 20px; /* Tambahkan padding kiri-kanan */
+  box-sizing: border-box; /* Sertakan padding dalam lebar */
+}
+
 .header {
-    background-color: #afafaf; /* Warna latar belakang */
-    color: white; /* Warna teks */
-    display: flex;
-    width: 100%; /* Mengubah lebar menjadi 100% agar responsif */
-    max-width: 1800px; /* Menetapkan lebar maksimum */
-    height: 75px;
-    padding: 0 10%; /* Menggunakan padding yang lebih fleksibel */
-    align-items: center;
-    justify-content: space-between; /* Mengatur jarak antar elemen */
-    flex-shrink: 0;
-    }
-    
-    /* Gaya untuk navbar */
-    .navbar {
-      margin-top: 10px; /* Jarak atas navbar */
-    }
-    
-    /* Gaya untuk daftar link */
-    .nav-links {
-      list-style-type: none; /* Menghilangkan bullet points */
-      padding: 0; /* Menghilangkan padding */
-      display: flex; /* Menyusun item dalam baris */
-      justify-content: center; /* Rata tengah */
-    }
-    
-    /* Gaya untuk setiap link */
-    .nav-links li {
-      margin: 0 15px; /* Jarak antara item */
-    }
-    
-    /* Gaya untuk tautan */
-    .nav-links a {
-      color: white; /* Warna teks tautan */
-      text-decoration: none; /* Menghilangkan garis bawah */
-      font-weight: bold; /* Menebalkan teks */
-      transition: color 0.3s; /* Transisi warna saat hover */
-    }
-    
-    /* Gaya untuk tautan saat hover */
-    .nav-links a:hover {
-      color: #ffdd57; /* Warna saat hover */
-    }
+  color: #afafaf; /* Warna teks */
+  display: flex;
+  width: 100%;
+  max-width: 1200px; /* Sesuaikan lebar maksimum */
+  height: 75px; /* Tinggi tetap */
+  align-items: center; /* Posisikan item vertikal di tengah */
+  justify-content: space-between; /* Jarak antar elemen */
+  padding: 0 20px; /* Padding kiri-kanan tetap */
+  box-sizing: border-box; /* Sertakan padding dalam lebar */
+}
+
+@media (max-width: 768px) {
+  .header {
+      flex-direction: column; /* Susun elemen secara vertikal */
+      height: auto; /* Tinggi menyesuaikan isi */
+      padding: 10px; /* Padding lebih kecil */
+  }
+
+  .header nav {
+      display: flex;
+      flex-wrap: wrap; /* Bungkus elemen jika terlalu banyak */
+      justify-content: center; /* Pusatkan elemen pada layar kecil */
+  }
+
+  .header nav a {
+      margin: 5px; /* Jarak antar item */
+  }
+}
+
+/* Gaya untuk navbar */
+.navbar {
+  margin-top: 10px; /* Jarak atas navbar */
+}
+
+/* Gaya untuk daftar link */
+.nav-links {
+  list-style-type: none; /* Menghilangkan bullet points */
+  padding: 0; /* Menghilangkan padding */
+  display: flex; /* Menyusun item dalam baris */
+  justify-content: center; /* Rata tengah */
+  flex-wrap: wrap; /* Bungkus elemen jika terlalu banyak */
+}
+
+/* Gaya untuk setiap link */
+.nav-links li {
+  margin: 0 15px; /* Jarak antara item */
+}
+
+/* Gaya untuk tautan */
+.nav-links a {
+  color: white; /* Warna teks tautan */
+  text-decoration: none; /* Menghilangkan garis bawah */
+  font-weight: bold; /* Menebalkan teks */
+  transition: color 0.3s; /* Transisi warna saat hover */
+  padding: 10px 15px; /* Tambahkan padding untuk tautan */
+}
+
+/* Gaya untuk tautan saat hover */
+.nav-links a:hover {
+  color: #ffdd57; /* Warna saat hover */
+}

@@ -5,24 +5,13 @@ body {
   box-sizing: border-box;
 }
 
-.header {
-  background-color: #e0e6ed;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 50px;
-}
+
 
 .header h1 {
   margin: 0;
   color: #000;
-  font-family: Gilroy-SemiBoldItalic;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   font-family: "Lato", sans-serif;
+  font-size: 32px;
   font-weight: 700;
   font-style: italic;
 }
@@ -39,6 +28,9 @@ body {
 
 .app main {
   padding: 20px;
+  max-width: 1200px; /* Menentukan lebar maksimum */
+  width: 100%; /* Lebar penuh */
+  margin: 0 auto; /* Centering */
 }
 
 .app h2 {
@@ -53,11 +45,9 @@ body {
   gap: 20px;
   justify-items: center;
   margin-top: 20px;
+  max-width: 1200px; /* Menentukan lebar maksimum */
+  width: 100%; /* Lebar penuh */
+  margin: 0 auto; /* Centering */
 }
 
-footer {
-  background-color: #333;
-  color: #f6ad55;
-  text-align: center;
-  padding: 10px;
-}
+.footer-wrapper { width: 100%; background-color: #afafaf; /* Warna latar belakang penuh */ display: flex; justify-content: center; /* Centering horizontal */ } .footer { color: white; /* Warna teks */ text-align: center; padding: 10px; max-width: 1200px; /* Menentukan lebar maksimum */ width: 100%; box-sizing: border-box; /* Sertakan padding dalam lebar */ margin-left: 250px; /* Same as sidebar width */ }

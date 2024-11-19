@@ -1,0 +1,123 @@
+/* Mengatur container FAQ agar tidak mepet ke pinggir */
+.faq-container {
+  max-width: 800px; /* Maksimal lebar konten */
+  margin: 0 auto; /* Agar FAQ terpusat di tengah */
+  padding: 20px; /* Memberikan ruang di sekitar konten */
+  background-color: #ffffff; /* Tambahkan warna latar belakang putih */
+  border-radius: 10px; /* Tambahkan border radius untuk tampilan lembut */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+}
+
+/* Judul FAQ */
+.faq-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333333; /* Warna teks gelap untuk kontras */
+}
+
+/* Mengatur layout FAQ */
+ul.faq-list {
+  list-style-type: none; /* Hilangkan bullet point */
+  padding: 0;
+  margin: 0;
+}
+
+li.faq-item {
+  margin-bottom: 15px; /* Memberikan jarak antar pertanyaan */
+}
+
+/* Tombol pertanyaan */
+button.faq-button {
+  background-color: #25d366; /* Warna hijau WhatsApp */
+  color: white; /* Warna teks putih */
+  padding: 12px 20px; /* Padding tombol */
+  border: none;
+  text-align: left; /* Teks rata kiri */
+  width: 100%; /* Lebar penuh */
+  cursor: pointer;
+  margin: 5px 0; /* Margin antar tombol */
+  border-radius: 20px; /* Border bulat */
+  font-size: 16px; /* Ukuran font */
+  font-weight: bold; /* Teks tebal */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.faq-button:hover {
+  background-color: #128c7e; /* Warna hijau gelap */
+  transform: scale(1.05); /* Efek zoom sedikit pada hover */
+}
+
+/* Bubble chat untuk jawaban */
+p.faq-answer {
+  background-color: #f9f9f9; /* Warna latar jawaban lebih terang */
+  padding: 15px; /* Padding jawaban */
+  border-radius: 20px; /* Border bulat */
+  max-width: 80%; /* Lebar maksimal 80% */
+  margin-left: 50px; /* Jarak dari kiri */
+  margin-top: 10px; /* Jarak atas */
+  border: 1px solid #ddd; /* Border ringan */
+  font-size: 14px; /* Ukuran font jawaban */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+  opacity: 0; /* Jawaban tersembunyi secara default */
+  animation: fadeIn 0.3s forwards; /* Efek animasi untuk jawaban muncul */
+}
+
+/* Efek animasi untuk jawaban muncul */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Memberikan jarak antar elemen */
+button.faq-button + p.faq-answer {
+  margin-top: 10px; /* Jarak tambahan antara tombol dan jawaban */
+}
+
+/* Tombol Kembali ke Beranda */
+.back-to-home {
+  background-color: #ffffff; /* Warna latar putih */
+  color: #007bff; /* Biru untuk teks tombol kembali */
+  padding: 12px 20px; /* Padding tombol */
+  border: 2px solid #007bff; /* Border biru */
+  border-radius: 20px; /* Border bulat */
+  font-size: 16px; /* Ukuran font */
+  width: 100%; /* Lebar penuh */
+  margin-top: 20px; /* Jarak dari elemen atas */
+  cursor: pointer;
+  font-weight: bold; /* Teks tebal */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-to-home:hover {
+  background-color: #007bff; /* Warna biru penuh pada hover */
+  color: white; /* Warna teks putih pada hover */
+}
+
+/* Mengatur responsivitas tampilan agar nyaman di perangkat kecil */
+@media (max-width: 600px) {
+  .faq-container {
+    padding: 10px; /* Mengurangi padding pada perangkat kecil */
+  }
+
+  button.faq-button {
+    font-size: 14px; /* Ukuran font lebih kecil */
+    padding: 10px 16px; /* Padding lebih kecil */
+  }
+
+  p.faq-answer {
+    font-size: 12px; /* Ukuran font jawaban lebih kecil */
+    padding: 12px; /* Padding lebih kecil */
+    margin-left: 20px; /* Jarak kiri lebih kecil */
+  }
+
+  .back-to-home {
+    font-size: 14px; /* Ukuran font lebih kecil */
+    padding: 10px 16px; /* Padding lebih kecil */
+  }
+}
