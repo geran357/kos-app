@@ -7,14 +7,14 @@ import WelcomePage from "../pages/pages_beranda_user/penghuniWelcome";
 import PenghuniChat from "../pages/pages_beranda_user/penghuniChat";
 import PenghuniPembayaran from "../pages/pages_beranda_user/penghuniPembayaran";
 import PenghuniTugas from "../pages/pages_beranda_user/penghuniTugas";
-import PenghuniProfile from "../pages/pages_beranda_user/penghuniProfile";
+import PenghuniProfile from "../pages/pages_beranda_user/peraturanPenghuni"; // Pastikan ini benar
 // Mengimpor dari pages_beranda_admin
 import AdminPage from "../pages/Pages_beranda_admin/adminPage";
 import ControlKamar from "../pages/Pages_beranda_admin/controlKamar";
 import ControlKebersihan from "../pages/Pages_beranda_admin/controlKebersihan";
 import ControlPembayaran from "../pages/Pages_beranda_admin/controlPembayaran";
 import ControlPenghuni from "../pages/Pages_beranda_admin/controlPenghuni";
-import ControlUserPass from "../pages/Pages_beranda_admin/controlUserPass";
+import ControlUserPass from "../pages/Pages_beranda_admin/controlUserPass"; // Perbaiki nama import
 import "./App.css";
 import "./Navbar.css"; // Mengimpor Navbar.css
 
@@ -34,7 +34,7 @@ const App: React.FC = () => {
                   <Link to="/login">Login user</Link>
                 </li>
                 <li>
-                  <Link to="/">login Admin</Link>
+                  <Link to="/adminPage">Login Admin</Link> {/* Tautan ke halaman admin */}
                 </li>
               </ul>
             </nav>
@@ -52,15 +52,15 @@ const App: React.FC = () => {
           <Route path="/penghuniChat" element={<PenghuniChat />} />
           <Route path="/penghuniPembayaran" element={<PenghuniPembayaran />} />
           <Route path="/penghuniTugas" element={<PenghuniTugas />} />
-          <Route path="/penghuniProfile" element={<PenghuniProfile />} />
-
+          <Route path="/peraturanPenghuni" element={<PenghuniProfile />} /> {/* Perbaikan path */}
+          
           {/* Halaman Admin */}
           <Route path="/adminPage" element={<AdminPage />} />
           <Route path="/controlKamar" element={<ControlKamar />} />
           <Route path="/controlKebersihan" element={<ControlKebersihan />} />
           <Route path="/controlPembayaran" element={<ControlPembayaran />} />
           <Route path="/controlPenghuni" element={<ControlPenghuni />} />
-          <Route path="/controlUserPass" element={<ControlUserPass />} />
+          <Route path="/controlUserPass" element={<ControlUserPass />} /> {/* Perbaiki rute */}
         </Routes>
         <div className="footer-wrapper">
           <footer className="footer">

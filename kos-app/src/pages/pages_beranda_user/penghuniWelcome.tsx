@@ -29,8 +29,8 @@ const PenghuniWelcome: React.FC = () => {
               <button onClick={() => navigate("/")}>📊 Dasbor</button>
             </li>
             <li>
-              <button onClick={() => navigate("/penghuniProfile")}>
-                👤 Profil Saya
+              <button onClick={() => navigate("/peraturanPenghuni")}>
+                ☑️ Peraturan Penghuni
               </button>
             </li>
             <li className="menu-section">Keuangan</li>
