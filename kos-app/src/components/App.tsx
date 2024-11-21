@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "../pages/Home"; // Untuk Home
 import Login from "../pages/Login"; // Untuk Login
+import LupaPassword from "../pages/lupaPassword";
 import WelcomePage from "../pages/pages_beranda_user/penghuniWelcome";
 // Mengimpor dari beranda-user
 import PenghuniChat from "../pages/pages_beranda_user/penghuniChat";
@@ -46,6 +47,7 @@ const App: React.FC = () => {
 
           {/* Halaman Login */}
           <Route path="/login" element={<Login />} />
+          <Route path="/lupaPassword" element={<LupaPassword />} />
 
           {/* Halaman Penghuni */}
           <Route path="/penghuniWelcome" element={<WelcomePage />} />

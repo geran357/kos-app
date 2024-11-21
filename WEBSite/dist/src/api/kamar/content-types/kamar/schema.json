@@ -1,0 +1,31 @@
+{
+    "kind": "collectionType",
+    "collectionName": "kamars",
+    "info": {
+        "singularName": "kamar",
+        "pluralName": "kamars",
+        "displayName": "kamar"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "no_kamar": {
+            "type": "integer"
+        },
+        "harga_per_bulan": {
+            "type": "integer"
+        },
+        "harga_per_tahun": {
+            "type": "integer"
+        },
+        "status_kamar": {
+            "type": "enumeration",
+            "enum": [
+                "Terisi",
+                "Kosong"
+            ]
+        }
+    }
+}

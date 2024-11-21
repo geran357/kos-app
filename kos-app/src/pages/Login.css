@@ -1,57 +1,130 @@
+/* Umum */
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #f5f5f5;
+}
+
+button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1b3350;
+}
+
+/* Kontainer Login */
 .login-container {
-    width: 500px;
-    padding: 20px;
-    margin: 117px auto;
-    background-color: #f0f4f8;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
+  width: 500px;
+  padding: 20px;
+  margin: 117px auto;
+  background-color: #f0f4f8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.login-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Input Fields */
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Button */
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0ea47a;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* Style untuk Spinner */
+.loading-spinner {
+  border: 3px solid #f3f3f3; /* warna latar belakang */
+  border-top: 3px solid #3498db; /* warna spinner */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+}
+
+/* Animasi putar untuk spinner */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Tombol login ketika loading */
+.login-button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+
+
+/* Forgot Password */
+.forgot-password {
+  margin-top: 20px;
+  color: #ff0000;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Error Message */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Responsif pada layar lebih kecil */
+@media (max-width: 480px) {
+  .login-container {
+    width: 90%;  /* Lebih lebar pada perangkat kecil */
   }
-  
+
   .login-title {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
+    font-size: 20px;
   }
-  
-  .input-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    padding: 10px;
-  }
-  
-  .icon {
-    margin-right: 10px;
-  }
-  
-  .input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    outline: none;
-    font-size: 14px;
-    color: #333;
-  }
-  
+
   .login-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #0ea47a;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  
-  .forgot-password {
-    margin-top: 20px;
-    color: #ff0000;
     font-size: 14px;
   }
-  
+}

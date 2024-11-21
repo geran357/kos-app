@@ -48,7 +48,7 @@ const PenghuniWelcome: React.FC = () => {
             <li className="menu-section">Chat</li>
             <li>
               <button onClick={() => navigate("/penghuniChat")}>
-                💬 Chat dengan IbuKos
+                💬 ada yang ingin ditanyakan?
               </button>
             </li>
           </ul>
@@ -62,7 +62,10 @@ const PenghuniWelcome: React.FC = () => {
 
         <div className="content">
           <div className="background">
-            <p>Selamat datang di platform penghuni kos!</p>
+            <h2>
+              {" "}
+              <p>Selamat datang di platform penghuni kos!</p>
+            </h2>
           </div>
         </div>
       </main>
