@@ -5,7 +5,7 @@
   display: flex; /* Menggunakan flex untuk centering */
   justify-content: center; /* Centering horizontal */
   padding: 0 20px; /* Tambahkan padding kiri-kanan */
-  box-sizing: border-box; /* Sertakan padding dalam lebar */
+  box-sizing: border-box; /* Sertakan padding  dalam lebar */
 }
 
 .header {

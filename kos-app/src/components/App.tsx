@@ -35,7 +35,8 @@ const App: React.FC = () => {
                   <Link to="/login">Login user</Link>
                 </li>
                 <li>
-                  <Link to="/adminPage">Login Admin</Link> {/* Tautan ke halaman admin */}
+                  <Link to="/adminPage">Login Admin</Link>{" "}
+                  {/* Tautan ke halaman admin */}
                 </li>
               </ul>
             </nav>
@@ -44,25 +45,24 @@ const App: React.FC = () => {
         <Routes>
           {/* Halaman Utama */}
           <Route path="/" element={<Home />} />
-
           {/* Halaman Login */}
           <Route path="/login" element={<Login />} />
           <Route path="/lupaPassword" element={<LupaPassword />} />
-
           {/* Halaman Penghuni */}
           <Route path="/penghuniWelcome" element={<WelcomePage />} />
           <Route path="/penghuniChat" element={<PenghuniChat />} />
           <Route path="/penghuniPembayaran" element={<PenghuniPembayaran />} />
           <Route path="/penghuniTugas" element={<PenghuniTugas />} />
-          <Route path="/peraturanPenghuni" element={<PenghuniProfile />} /> {/* Perbaikan path */}
-          
+          <Route path="/peraturanPenghuni" element={<PenghuniProfile />} />{" "}
+          {/* Perbaikan path */}
           {/* Halaman Admin */}
           <Route path="/adminPage" element={<AdminPage />} />
           <Route path="/controlKamar" element={<ControlKamar />} />
           <Route path="/controlKebersihan" element={<ControlKebersihan />} />
           <Route path="/controlPembayaran" element={<ControlPembayaran />} />
           <Route path="/controlPenghuni" element={<ControlPenghuni />} />
-          <Route path="/controlUserPass" element={<ControlUserPass />} /> {/* Perbaiki rute */}
+          <Route path="/controlUserPass" element={<ControlUserPass />} />{" "}
+          {/* Perbaiki rute */}
         </Routes>
         <div className="footer-wrapper">
           <footer className="footer">

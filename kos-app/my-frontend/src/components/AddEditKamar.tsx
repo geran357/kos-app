@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // Ganti useHistory dengan useNavigate
-import api from "../api"; // Import axios atau api instance
+import { useParams, useNavigate } from "react-router-dom";
+import api from "../api";
+import "./tampilanEdit.css";
 
-// Interface untuk data kamar
 interface Kamar {
   id?: number;
   no_kamar: number;
@@ -18,10 +18,9 @@ const AddEditKamar: React.FC = () => {
     harga_per_tahun: 0,
     status_kamar: "Kosong",
   });
-  const { id } = useParams<{ id: string }>(); // Mengambil ID kamar dari URL jika sedang mengedit
-  const navigate = useNavigate(); // Untuk navigasi setelah submit
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
-  // Fungsi untuk mengambil data kamar jika sedang mengedit
   const fetchKamar = async (id: string) => {
     try {
       const response = await api.get(`/kamar/${id}`);
@@ -31,40 +30,33 @@ const AddEditKamar: React.FC = () => {
     }
   };
 
-  // Fungsi untuk handle perubahan form
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setKamar({ ...kamar, [name]: value });
   };
 
-  // Fungsi untuk handle perubahan status kamar
   const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setKamar({ ...kamar, status_kamar: e.target.value as "Kosong" | "Terisi" });
   };
 
-  // Fungsi untuk menambahkan kamar baru atau memperbarui data kamar
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       if (id) {
-        // Jika ada ID, maka kita akan melakukan update
         await api.put(`/kamar/${id}`, {
           data: kamar,
         });
       } else {
-        // Jika tidak ada ID, berarti menambah data baru
         await api.post("/kamar", {
           data: kamar,
         });
       }
-      // Navigasi kembali setelah berhasil menambah/merubah data
-      navigate("/kamar"); // Ganti history.push dengan navigate
+      navigate("/kamar");
     } catch (error) {
       console.error("Error saving data kamar:", error);
     }
   };
 
-  // Jika ada ID, ambil data kamar untuk diedit
   useEffect(() => {
     if (id) {
       fetchKamar(id);
@@ -72,7 +64,7 @@ const AddEditKamar: React.FC = () => {
   }, [id]);
 
   return (
-    <div>
+    <div className="container-kamar">
       <h1>{id ? "Edit" : "Tambah"} Kamar</h1>
       <form onSubmit={handleSubmit}>
         <div>

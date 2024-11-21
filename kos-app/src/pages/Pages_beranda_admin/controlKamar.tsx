@@ -1,12 +1,15 @@
-import React from 'react';
+import React from "react";
+import KamarTable from "../../../my-frontend/src/components/KamarTable";
 
-const ControlKamar = () => {
-    return (
-        <div>
-            <h1>Control Kamar</h1>
-            <p>Kelola kamar di sini.</p>
-        </div>
-    );
+
+const AdminPage = () => {
+  return (
+    <div>
+      <h1>control kamar</h1>
+      {/* Menampilkan tabel kamar */}
+      <KamarTable />
+    </div>
+  );
 };
 
-export default ControlKamar;
+export default AdminPage;

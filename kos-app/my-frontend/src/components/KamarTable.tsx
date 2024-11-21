@@ -1,61 +1,108 @@
+// components/KamarTable.tsx
 import React, { useEffect, useState } from "react";
-import api from "../api"; // pastikan ini mengarah ke file API yang benar
+import axios from "axios";
+import "./table.css";
 
-interface Kamar {
-  id: number;
-  documentId: string;
-  no_kamar: number;
-  harga_per_bulan: number;
-  harga_per_tahun: number;
-  status_kamar: "Kosong" | "Terisi";
-}
+const KamarTable = () => {
+  const [kamarData, setKamarData] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-const KamarTable: React.FC = () => {
-  const [dataKamar, setDataKamar] = useState<Kamar[]>([]);
+  // Mengambil data kamar dari server
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:1337/api/kamars");
+        setKamarData(response.data.data);
+        setError(null);
+      } catch (err) {
+        setError("Gagal memuat data kamar.");
+        console.error("Error fetching kamar data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const fetchKamar = async () => {
+    fetchData();
+  }, []);
+
+  const handleEditStatus = async (id: number, currentStatus: string) => {
+    const newStatus = currentStatus === "Terisi" ? "Kosong" : "Terisi"; // Mengubah status sesuai logika
+
     try {
-      const res = await api.get("/kamar");
-      console.log("Data Kamar:", res.data.data);  // Periksa data yang diterima
-      setDataKamar(res.data.data);
+      const response = await axios.put(
+        `http://localhost:1337/api/kamars/${id}`,
+        {
+          data: {
+            status_kamar: newStatus, // Bungkus status_kamar dalam objek data
+          },
+        }
+      );
+
+      // Update state agar tabel otomatis ter-refresh
+      setKamarData((prevData) =>
+        prevData.map((kamar) =>
+          kamar.id === id
+            ? { ...kamar, status_kamar: newStatus } // Update status_kamar
+            : kamar
+        )
+      );
     } catch (error) {
-      console.error("Error fetching data:", error);
+      if (axios.isAxiosError(error)) {
+        console.error(
+          "Error updating kamar status:",
+          error.response?.data || error
+        );
+        alert(
+          `Gagal memperbarui status kamar: ${
+            error.response?.data?.message || "Terjadi kesalahan."
+          }`
+        );
+      } else {
+        console.error("Unexpected error:", error);
+        alert("Terjadi kesalahan yang tidak terduga.");
+      }
     }
   };
 
-  useEffect(() => {
-    fetchKamar();
-  }, []);
+  if (loading) {
+    return <p>Loading data kamar...</p>;
+  }
+
+  if (error) {
+    return <p className="error-message">{error}</p>;
+  }
 
   return (
-    <div>
-      <h1>Daftar Kamar</h1>
-      <table>
+    <div className="kamar-table-container">
+      <h2>Daftar Kamar</h2>
+      <table className="kamar-table">
         <thead>
           <tr>
-            <th>No</th>
             <th>No Kamar</th>
             <th>Harga Per Bulan</th>
             <th>Harga Per Tahun</th>
-            <th>Status</th>
+            <th>Status Kamar</th>
+            <th>Aksi</th>
           </tr>
         </thead>
         <tbody>
-          {dataKamar.length === 0 ? (
-            <tr>
-              <td colSpan={5}>Tidak ada data kamar.</td>
+          {kamarData.map((kamar) => (
+            <tr key={kamar.id}>
+              <td>{kamar.no_kamar}</td>
+              <td>{kamar.harga_per_bulan}</td>
+              <td>{kamar.harga_per_tahun}</td>
+              <td>{kamar.status_kamar}</td>
+              <td>
+                <button
+                  className="edit-button"
+                  onClick={() => handleEditStatus(kamar.id, kamar.status_kamar)}
+                >
+                  Ubah Status
+                </button>
+              </td>
             </tr>
-          ) : (
-            dataKamar.map((kamar, index) => (
-              <tr key={kamar.id}>
-                <td>{index + 1}</td>
-                <td>{kamar.no_kamar}</td>
-                <td>Rp. {kamar.harga_per_bulan.toLocaleString()}</td>
-                <td>Rp. {kamar.harga_per_tahun.toLocaleString()}</td>
-                <td>{kamar.status_kamar}</td>
-              </tr>
-            ))
-          )}
+          ))}
         </tbody>
       </table>
     </div>
