@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiKamarKamar extends Struct.CollectionTypeSchema {
   collectionName: 'kamars';
   info: {
+    description: '';
     displayName: 'kamar';
     pluralName: 'kamars';
     singularName: 'kamar';
@@ -389,6 +390,7 @@ export interface ApiKamarKamar extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::kamar.kamar'> &
       Schema.Attribute.Private;
     no_kamar: Schema.Attribute.Integer;
+    penghuni: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     status_kamar: Schema.Attribute.Enumeration<['Terisi', 'Kosong']>;
     updatedAt: Schema.Attribute.DateTime;

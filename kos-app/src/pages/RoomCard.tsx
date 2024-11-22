@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Pastikan untuk mengimpor Link
-import "./RoomCard.css"; // Pastikan file CSS ada
+import { Link } from "react-router-dom";
+import "./RoomCard.css";
 
 interface RoomCardProps {
   roomNumber: number;
@@ -22,12 +22,10 @@ const RoomCard: React.FC<RoomCardProps> = ({
       </div>
 
       <Link to="/login">
-        {" "}
-        {/* Pastikan URL sesuai dengan rute yang ada */}
         <button className="detail-button">LogIn</button>
       </Link>
     </div>
   );
 };
 
-export default RoomCard;
+export default RoomCard;  

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "kamar",
     "pluralName": "kamars",
-    "displayName": "kamar"
+    "displayName": "kamar",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -26,6 +27,9 @@
         "Terisi",
         "Kosong"
       ]
+    },
+    "penghuni": {
+      "type": "string"
     }
   }
 }

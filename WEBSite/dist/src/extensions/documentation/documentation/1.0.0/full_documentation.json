@@ -14,7 +14,7 @@
             "name": "Apache 2.0",
             "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
         },
-        "x-generation-date": "2024-11-22T05:29:35.649Z"
+        "x-generation-date": "2024-11-22T07:04:21.629Z"
     },
     "x-strapi-config": {
         "plugins": [
@@ -2527,6 +2527,9 @@
                                     "Kosong"
                                 ]
                             },
+                            "penghuni": {
+                                "type": "string"
+                            },
                             "locale": {
                                 "type": "string"
                             },
@@ -2607,6 +2610,9 @@
                             "Terisi",
                             "Kosong"
                         ]
+                    },
+                    "penghuni": {
+                        "type": "string"
                     },
                     "createdAt": {
                         "type": "string",
@@ -2923,6 +2929,9 @@
                                         "Terisi",
                                         "Kosong"
                                     ]
+                                },
+                                "penghuni": {
+                                    "type": "string"
                                 },
                                 "createdAt": {
                                     "type": "string",
