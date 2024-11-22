@@ -1,91 +1,79 @@
-/* ChecklistTasks.css */
+/* penghinutugas.css */
 
-/* Container utama halaman */
 .page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Tinggi minimum memenuhi layar */
-    background-color: #ecf0f1; /* Warna latar belakang halaman */
-    margin: 0; /* Hilangkan margin halaman */
-}
+    padding: 20px;
+  }
   
-/* Container checklist */
-.checklist-container {
-    background-color: #2c3e50;
-    padding: 40px; /* Meningkatkan padding */
-    border-radius: 10px;
-    color: #fff;
-    width: 500px; /* Meningkatkan lebar */
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
-}
+  .checklist-container {
+    margin-top: 20px;
+  }
   
-/* Judul */
-.checklist-title {
-    font-size: 28px; /* Meningkatkan ukuran font */
+  .checklist-title {
+    font-size: 24px;
     font-weight: bold;
-    margin-bottom: 25px; /* Meningkatkan margin bawah */
-}
+    margin-bottom: 20px;
+  }
   
-/* Daftar tugas */
-.checklist-list {
-    list-style: none;
-    padding: 0;
-}
+  .checklist-item {
+    list-style-type: none;
+    margin-bottom: 10px;
+  }
   
-.checklist-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px; /* Meningkatkan margin bawah */
-}
-  
-.checklist-item input[type="checkbox"] {
-    margin-right: 20px; /* Meningkatkan margin kanan */
-}
-  
-/* Tombol selesai */
-.checklist-button {
-    background-color: #2ecc71;
-    color: #fff;
+  .task-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
     border: none;
-    padding: 20px; /* Meningkatkan padding */
-    border-radius: 5px;
     cursor: pointer;
-    font-size: 18px; /* Meningkatkan ukuran font */
-    margin-bottom: 20px; /* Meningkatkan margin bawah */
-    width: 100%; /* Membuat tombol memenuhi lebar container */
-}
+    width: 100%;
+    text-align: left;
+    border-radius: 5px;
+  }
   
-.checklist-button:hover {
-    background-color: #27ae60;
-}
+  .task-button.completed {
+    background-color: #8bc34a;
+  }
   
-/* Tampilan selesai */
-.checklist-finished {
-    font-size: 24px; /* Meningkatkan ukuran font */
+  .checklist-button {
+    background-color: #2196f3;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .checklist-button:hover {
+    background-color: #1e88e5;
+  }
+  
+  .checklist-finished {
+    font-size: 18px;
+    color: #333;
     font-weight: bold;
-    margin: 20px 0; /* Meningkatkan margin */
-}
+  }
   
-.checklist-finished-message {
-    font-size: 18px; /* Meningkatkan ukuran font */
-    color: #bdc3c7;
-}
+  .checklist-finished-message {
+    font-size: 16px;
+    color: #555;
+  }
   
-/* Tombol kembali */
-.back-button {
-    background-color: #3498db;
-    color: #fff;
+  .back-button {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
     border: none;
-    padding: 20px; /* Meningkatkan padding */
-    border-radius: 5px;
     cursor: pointer;
-    font-size: 18px; /* Meningkatkan ukuran font */
-    width: 100%; /* Membuat tombol memenuhi lebar container */
-}
+    border-radius: 5px;
+    margin-top: 20px;
+  }
   
-.back-button:hover {
-    background-color: #2980b9;
-}
-
+  .back-button:hover {
+    background-color: #e53935;
+  }
+  
