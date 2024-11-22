@@ -63,7 +63,7 @@ const PenghuniWelcome: React.FC = () => {
         <div className="content">
           <div className="background">
             <h2>
-              <p>Selamat datang di platform penghuni kos!</p>
+              <p>Panel Admin</p>
             </h2>
           </div>
         </div>
