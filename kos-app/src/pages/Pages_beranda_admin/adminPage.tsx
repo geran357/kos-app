@@ -30,25 +30,25 @@ const PenghuniWelcome: React.FC = () => {
             </li>
             <li>
               <button onClick={() => navigate("/controlKamar")}>
-                ☑️ control Kamar
+                ☑️ Control Kamar
               </button>
             </li>
-            <li className="menu-section">Keuangan</li>
+            <li className="menu-section">Kebersihan</li>
             <li>
-              <button onClick={() => navigate("/penghuniPembayaran")}>
-                💲 Pembayaran
+              <button onClick={() => navigate("/controlPembayaran")}>
+                💲 Control Pembayaran
               </button>
             </li>
             <li className="menu-section">Tugas</li>
             <li>
-              <button onClick={() => navigate("/penghuniTugas")}>
-                ✅ Tugas Saya
+              <button onClick={() => navigate("/controlKebersihan")}>
+                ✅ Control Kebersihan
               </button>
             </li>
             <li className="menu-section">Chat</li>
             <li>
-              <button onClick={() => navigate("/penghuniChat")}>
-                💬 ada yang ingin ditanyakan?
+              <button onClick={() => navigate("/controlUserPass")}>
+                💬 Control User dan Pass
               </button>
             </li>
           </ul>
@@ -63,7 +63,6 @@ const PenghuniWelcome: React.FC = () => {
         <div className="content">
           <div className="background">
             <h2>
-              {" "}
               <p>Selamat datang di platform penghuni kos!</p>
             </h2>
           </div>

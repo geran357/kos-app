@@ -397,6 +397,37 @@ export interface ApiKamarKamar extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPenghuniPenghuni extends Struct.CollectionTypeSchema {
+  collectionName: 'penghunis';
+  info: {
+    displayName: 'Penghuni';
+    pluralName: 'penghunis';
+    singularName: 'penghuni';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Gmail: Schema.Attribute.Email;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::penghuni.penghuni'
+    > &
+      Schema.Attribute.Private;
+    Nama: Schema.Attribute.String;
+    Password: Schema.Attribute.Password;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    User: Schema.Attribute.String;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -907,6 +938,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::kamar.kamar': ApiKamarKamar;
+      'api::penghuni.penghuni': ApiPenghuniPenghuni;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

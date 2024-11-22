@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "penghunis",
+  "info": {
+    "singularName": "penghuni",
+    "pluralName": "penghunis",
+    "displayName": "Penghuni"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "User": {
+      "type": "string"
+    },
+    "Password": {
+      "type": "password"
+    },
+    "Gmail": {
+      "type": "email"
+    },
+    "Nama": {
+      "type": "string"
+    }
+  }
+}

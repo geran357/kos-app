@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./css/penghuniTugas.css";
 
 interface Task {
@@ -16,6 +16,24 @@ const ChecklistTasks: React.FC = () => {
   ]);
 
   const allCompleted = tasks.every((task) => task.completed);
+
+  useEffect(() => {
+    const lastResetDate = localStorage.getItem("lastResetDate");
+    const currentDate = new Date();
+    if (lastResetDate) {
+      const lastReset = new Date(lastResetDate);
+      const diffInDays = Math.floor(
+        (currentDate.getTime() - lastReset.getTime()) / (1000 * 3600 * 24)
+      );
+      if (diffInDays >= 7) {
+        // Reset tasks if 7 days have passed
+        setTasks(tasks.map((task) => ({ ...task, completed: false })));
+        localStorage.setItem("lastResetDate", currentDate.toISOString());
+      }
+    } else {
+      localStorage.setItem("lastResetDate", currentDate.toISOString());
+    }
+  }, []);
 
   const toggleTask = (id: number) => {
     setTasks((prevTasks) =>
