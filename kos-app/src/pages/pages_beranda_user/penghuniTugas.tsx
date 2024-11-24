@@ -11,6 +11,7 @@ interface Task {
 
 const ChecklistTasks: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [countdown, setCountdown] = useState<string>("");
 
   const allCompleted = tasks.every((task) => task.completed);
 
@@ -22,7 +23,7 @@ const ChecklistTasks: React.FC = () => {
 
         const formattedTasks = data.data.map((task: any) => ({
           id: task.id,
-          documentId: task.documentId, // Ambil documentId
+          documentId: task.documentId,
           title: task.Title || "Tidak ada judul",
           completed: task.completed || false,
         }));
@@ -43,26 +44,85 @@ const ChecklistTasks: React.FC = () => {
       const diffInDays = Math.floor(
         (currentDate.getTime() - lastReset.getTime()) / (1000 * 3600 * 24)
       );
+
+      // Jika sudah lebih dari 7 hari, reset tugas
       if (diffInDays >= 7) {
         setTasks((prevTasks) =>
           prevTasks.map((task) => ({ ...task, completed: false }))
         );
         localStorage.setItem("lastResetDate", currentDate.toISOString());
       }
+
+      // Menghitung waktu mundur
+      const resetDate = new Date(lastReset.getTime() + 7 * 24 * 60 * 60 * 1000);
+      updateCountdown(resetDate);
     } else {
       localStorage.setItem("lastResetDate", currentDate.toISOString());
     }
   }, []);
 
-  const toggleTask = (id: number) => {
-    const task = tasks.find((task) => task.id === id);
-    if (task) {
-      setTasks((prevTasks) =>
-        prevTasks.map((t) =>
-          t.id === id ? { ...t, completed: !t.completed } : t
-        )
+  // Update countdown setiap detik
+  const updateCountdown = (resetDate: Date) => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      const timeLeft = resetDate.getTime() - now.getTime();
+
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        setCountdown("Waktu reset selesai!");
+      } else {
+        const days = Math.floor(timeLeft / (1000 * 3600 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 3600 * 24)) / (1000 * 3600));
+        const minutes = Math.floor((timeLeft % (1000 * 3600)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`);
+      }
+    }, 1000); // Update setiap detik
+  };
+
+  const toggleTask = (documentId: string) => {
+    const updatedTasks = tasks.map((task) => {
+      if (task.documentId === documentId) {
+        return { ...task, completed: true };
+      }
+      return task;
+    });
+
+    setTasks(updatedTasks);
+    saveToStrapiByDocumentId(documentId);
+  };
+
+  const saveToStrapiByDocumentId = async (documentId: string) => {
+    const updatedTask = tasks.find((task) => task.documentId === documentId);
+    if (!updatedTask) return;
+
+    const requestBody = {
+      data: { 
+        completed: true, 
+        dateCompleted: new Date().toISOString(),
+      },
+    };
+
+    try {
+      const response = await fetch(
+        `http://localhost:1337/api/tasks/${documentId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody),
+        }
       );
-      saveToStrapiByDocumentId(task.documentId); // Gunakan documentId untuk update
+
+      if (!response.ok) {
+        throw new Error("Gagal memperbarui data tugas di Strapi.");
+      }
+
+      const updatedData = await response.json();
+      console.log("Tugas berhasil diperbarui di Strapi:", updatedData);
+    } catch (error) {
+      console.error("Kesalahan saat mengupdate tugas di Strapi:", error);
     }
   };
 
@@ -81,50 +141,6 @@ const ChecklistTasks: React.FC = () => {
     }
   };
 
-  const saveToStrapiByDocumentId = async (documentId: string) => {
-    const updatedTask = tasks.find((task) => task.documentId === documentId);
-    if (!updatedTask) {
-      console.error("Tugas dengan documentId tidak ditemukan:", documentId);
-      return;
-    }
-  
-    const requestBody = {
-      data: {
-        completed: updatedTask.completed,
-        dateCompleted: updatedTask.completed ? new Date().toISOString() : null,
-      },
-    };
-  
-    try {
-      const response = await fetch(
-        `http://localhost:1337/api/tasks?filters[documentId][$eq]=${documentId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(requestBody),
-        }
-      );
-  
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error("Error response from Strapi:", errorData);
-        throw new Error("Gagal memperbarui data tugas di Strapi.");
-      }
-  
-      console.log("Tugas berhasil diperbarui di Strapi:", await response.json());
-    } catch (error) {
-      // Cek apakah error adalah instance dari Error
-      if (error instanceof Error) {
-        console.error("Kesalahan saat mengupdate tugas di Strapi:", error.message);
-      } else {
-        console.error("Kesalahan tidak diketahui saat mengupdate tugas di Strapi:", error);
-      }
-    }
-  };
-  
-
   const handleBack = () => {
     console.log("Back button clicked");
   };
@@ -142,10 +158,10 @@ const ChecklistTasks: React.FC = () => {
             <h3 className="checklist-title">Jadwal Kegiatan</h3>
             <ul className="checklist-list">
               {tasks.map((task) => (
-                <li key={task.id} className="checklist-item">
+                <li key={task.documentId} className="checklist-item">
                   <button
                     className={`task-button ${task.completed ? "completed" : ""}`}
-                    onClick={() => toggleTask(task.id)}
+                    onClick={() => toggleTask(task.documentId)}
                   >
                     {task.title}
                   </button>
@@ -157,6 +173,9 @@ const ChecklistTasks: React.FC = () => {
             </button>
           </>
         )}
+        <p className="countdown">
+          Waktu reset otomatis tugas dalam: {countdown}
+        </p>
         <button onClick={handleBack} className="back-button">
           Kembali
         </button>

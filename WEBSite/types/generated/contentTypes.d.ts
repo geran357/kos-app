@@ -399,6 +399,39 @@ export interface ApiKamarKamar extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPaymentPayment extends Struct.CollectionTypeSchema {
+  collectionName: 'payments';
+  info: {
+    displayName: 'Payment';
+    pluralName: 'payments';
+    singularName: 'payment';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Jumlah_Harus_Dibayar: Schema.Attribute.Integer;
+    Keterangan: Schema.Attribute.Enumeration<['Sudah_bayar', 'Belum_bayar']>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::payment.payment'
+    > &
+      Schema.Attribute.Private;
+    Nama: Schema.Attribute.String;
+    No_Kamar: Schema.Attribute.Integer;
+    Nominal_Pembayaran: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    Tanggal_Pembayaran: Schema.Attribute.Date;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPenghuniPenghuni extends Struct.CollectionTypeSchema {
   collectionName: 'penghunis';
   info: {
@@ -430,6 +463,38 @@ export interface ApiPenghuniPenghuni extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiTagihanTagihan extends Struct.CollectionTypeSchema {
+  collectionName: 'tagihans';
+  info: {
+    description: '';
+    displayName: 'Tagihan';
+    pluralName: 'tagihans';
+    singularName: 'tagihan';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Items: Schema.Attribute.JSON;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tagihan.tagihan'
+    > &
+      Schema.Attribute.Private;
+    Pembayaran_Visa_Mandiri: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Status_Pembayaran: Schema.Attribute.Enumeration<['Belum', 'Berhasil']>;
+    Total: Schema.Attribute.Integer;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTaskTask extends Struct.CollectionTypeSchema {
   collectionName: 'tasks';
   info: {
@@ -446,6 +511,7 @@ export interface ApiTaskTask extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    dateCompleted: Schema.Attribute.Date;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::task.task'> &
       Schema.Attribute.Private;
@@ -967,7 +1033,9 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::kamar.kamar': ApiKamarKamar;
+      'api::payment.payment': ApiPaymentPayment;
       'api::penghuni.penghuni': ApiPenghuniPenghuni;
+      'api::tagihan.tagihan': ApiTagihanTagihan;
       'api::task.task': ApiTaskTask;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

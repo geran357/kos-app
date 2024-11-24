@@ -4,6 +4,7 @@ import "./table.css";
 
 interface Task {
   id: number;
+  documentId: string;
   title: string;
   completed: boolean;
   dateCompleted?: string;
@@ -14,40 +15,32 @@ const TaskTable: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Mengambil data tugas dari server
+  // Fungsi untuk mengambil data dari Strapi
+  const fetchTasks = async () => {
+    try {
+      setLoading(true); // Mulai loading
+      const response = await axios.get("http://localhost:1337/api/tasks?populate=*");
+      const fetchedTasks = response.data.data.map((task: any) => ({
+        id: task.id,
+        documentId: task.documentId || "Tidak tersedia",
+        title: task.Title || "Tidak ada judul",
+        completed: task.completed || false,
+        dateCompleted: task.dateCompleted || null,
+      }));
+
+      setTasks(fetchedTasks); // Menyimpan data ke state
+      setError(null); // Reset error jika sukses
+    } catch (err) {
+      setError("Gagal memuat data tugas.");
+      console.error("Error fetching tasks:", err);
+    } finally {
+      setLoading(false); // Selesai loading
+    }
+  };
+
+  // Mengambil data saat komponen dimuat
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:1337/api/tasks?populate=*");
-        console.log("Response dari Strapi:", response.data); // Debugging respons dari Strapi
-
-        // Memastikan data yang diterima memiliki struktur yang benar
-        const fetchedTasks = response.data.data.map((task: any) => {
-          console.log("Task yang diterima:", task); // Debugging setiap task yang diterima
-
-          // Mengakses Title langsung dari objek task, bukan task.attributes
-          const title = task.Title;
-          console.log("Judul tugas:", title); // Debugging field Title
-
-          return {
-            id: task.id,
-            title: title || "Tidak ada judul", // Jika Title tidak ada, tampilkan "Tidak ada judul"
-            completed: task.completed || false,
-            dateCompleted: task.dateCompleted,
-          };
-        });
-
-        setTasks(fetchedTasks); // Menyimpan tugas yang sudah diformat
-        setError(null);
-      } catch (err) {
-        setError("Gagal memuat data tugas.");
-        console.error("Error fetching tasks:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+    fetchTasks();
   }, []);
 
   if (loading) {
@@ -60,11 +53,12 @@ const TaskTable: React.FC = () => {
 
   return (
     <div className="task-table-container">
-      <h2>Daftar Tugas</h2>
+      <h2>Daftar Tugas (Admin)</h2>
       <table className="task-table">
         <thead>
           <tr>
             <th>Judul Tugas</th>
+            <th>ID Dokumen</th>
             <th>Status</th>
             <th>Tanggal Selesai</th>
           </tr>
@@ -73,10 +67,11 @@ const TaskTable: React.FC = () => {
           {tasks.map((task) => (
             <tr key={task.id}>
               <td>{task.title}</td>
+              <td>{task.documentId}</td>
               <td className={task.completed ? "completed" : "in-progress"}>
                 {task.completed ? "Selesai" : "Belum Selesai"}
               </td>
-              <td>{task.completed ? task.dateCompleted : "-"}</td>
+              <td>{task.dateCompleted ? new Date(task.dateCompleted).toLocaleString() : "-"}</td>
             </tr>
           ))}
         </tbody>

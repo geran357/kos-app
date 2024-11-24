@@ -1,53 +1,63 @@
-import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
-import "./css/penghuniPembayaran.css"; // Mengimpor CSS untuk styling
-
-type PaymentStatus = "processing" | "success"; // Status pembayaran
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./css/penghuniPembayaran.css"; // Pastikan menggunakan file CSS yang sesuai
 
 const PenghuniPembayaran: React.FC = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
-  const paymentStatus: PaymentStatus = "processing"; // Atur status di sini
+  const [paymentDetails, setPaymentDetails] = useState<any>(null);
 
-  const handleBackClick = () => {
-    navigate("/penghuniWelcome"); // Ganti "/desired-page" dengan path yang ingin dituju
-  };
+  // Ambil data pembayaran dari Strapi tanpa ID
+  useEffect(() => {
+    const fetchPaymentDetails = async () => {
+      try {
+        const response = await axios.get("http://localhost:1337/api/tagihans"); // Tanpa ID, ambil semua data
+        console.log(response.data); // Lihat struktur data yang diterima
+        setPaymentDetails(response.data.data[0]); // Ambil data pertama dari respons (karena hanya ada 1 entry)
+      } catch (error) {
+        console.error("Gagal mengambil data:", error);
+      }
+    };
+    
+    fetchPaymentDetails();
+  }, []);
+
+  // Cek apakah data pembayaran sudah diterima
+  if (!paymentDetails) {
+    return <p>Loading...</p>;
+  }
+
+  // Ambil properti langsung dari paymentDetails
+  const { Items, Total, Pembayaran_Visa_Mandiri, Status_Pembayaran } = paymentDetails;
 
   return (
     <div className="payment-container">
       <h2>Pembayaran</h2>
       <p>Tagihan Bulan Ini</p>
       <div className="payment-card">
+        {/* Menampilkan list tagihan */}
         <ul className="payment-list">
-          <li>Listrik: Rp. 100.000,00</li>
-          <li>Air PDAM: Rp. 100.000,00</li>
-          <li>Sewa Kamar: Rp. 200.000,00</li>
-          <li>Wifi: Rp. 100.000,00</li>
+          {Items.items?.map((item: any, index: number) => (
+            <li key={index}>
+              {item.name}: Rp. {item.amount.toLocaleString()}
+            </li>
+          ))}
         </ul>
         <hr />
         <p>
-          <strong>Total:</strong> Rp. 500.000,00
+          <strong>Total:</strong> Rp. {Total.toLocaleString()}
         </p>
         <p>
-          <strong>Pembayaran Via Mandiri:</strong> 6032 9875 0917 2612
+          <strong>Pembayaran Via Mandiri:</strong> {Pembayaran_Visa_Mandiri}
         </p>
         <div className="payment-status">
           <span
             className={`status-indicator ${
-              paymentStatus === "processing"
-                ? "status-processing"
-                : "status-success"
+              Status_Pembayaran === "Belum" ? "status-processing" : "status-success"
             }`}
           >
-            {paymentStatus === "processing" ? "Sedang Diproses" : "Berhasil"}
+            {Status_Pembayaran === "Belum" ? "Sedang Diproses" : "Berhasil"}
           </span>
         </div>
       </div>
-      <button
-        className="btn btn-back"
-        onClick={handleBackClick} // Use the handleBackClick function
-      >
-        Balik ke Beranda
-      </button>
     </div>
   );
 };

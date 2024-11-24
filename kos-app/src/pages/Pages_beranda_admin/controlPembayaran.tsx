@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
+import KamarTable from "../../../my-frontend/src/components/TablePembayaran";
 
-const ControlPembayaran = () => {
-    return (
-        <div>
-            <h1>Control Pembayaran</h1>
-            <p>Kelola pembayaran di sini.</p>
-        </div>
-    );
+const AdminPage = () => {
+  return (
+    <div>
+      <h1>control kamar</h1>
+      {/* Menampilkan tabel kamar */}
+      <KamarTable />
+    </div>
+  );
 };
 
-export default ControlPembayaran;
+export default AdminPage;

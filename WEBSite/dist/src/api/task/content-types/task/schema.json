@@ -17,6 +17,9 @@
         },
         "completed": {
             "type": "boolean"
+        },
+        "dateCompleted": {
+            "type": "date"
         }
     }
 }

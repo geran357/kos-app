@@ -1,0 +1,32 @@
+{
+    "kind": "collectionType",
+    "collectionName": "tagihans",
+    "info": {
+        "singularName": "tagihan",
+        "pluralName": "tagihans",
+        "displayName": "Tagihan",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "Items": {
+            "type": "json"
+        },
+        "Total": {
+            "type": "integer"
+        },
+        "Pembayaran_Visa_Mandiri": {
+            "type": "string"
+        },
+        "Status_Pembayaran": {
+            "type": "enumeration",
+            "enum": [
+                "Belum",
+                "Berhasil"
+            ]
+        }
+    }
+}

@@ -2,7 +2,7 @@
 .payment-container {
   padding: 20px;
   font-family: Arial, sans-serif;
-  text-align: center; /* Center all text in the container */
+  text-align: center;
 }
 
 /* Kartu pembayaran */
@@ -11,13 +11,13 @@
   color: #fff;
   padding: 20px;
   border-radius: 10px;
-  text-align: center; /* Center text within the payment card */
+  text-align: center;
 }
 
 .payment-list {
   list-style: none;
   padding-left: 0;
-  text-align: left; /* Keep the list aligned to the left for better readability */
+  text-align: left;
 }
 
 .payment-list li {

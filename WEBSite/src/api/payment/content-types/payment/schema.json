@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "singularName": "payment",
+    "pluralName": "payments",
+    "displayName": "Payment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nama": {
+      "type": "string"
+    },
+    "No_Kamar": {
+      "type": "integer"
+    },
+    "Tanggal_Pembayaran": {
+      "type": "date"
+    },
+    "Jumlah_Harus_Dibayar": {
+      "type": "integer"
+    },
+    "Nominal_Pembayaran": {
+      "type": "integer"
+    },
+    "Keterangan": {
+      "type": "enumeration",
+      "enum": [
+        "Sudah_bayar",
+        "Belum_bayar"
+      ]
+    }
+  }
+}
