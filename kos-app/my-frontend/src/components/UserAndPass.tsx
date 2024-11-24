@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import api from "../api"; // Impor axios instance
+import api from "../api"; // Impor instance axios
 import "./UserAndPass.css";
 
 type User = {
@@ -8,6 +8,7 @@ type User = {
   password: string;
   name: string;
   email: string;
+  confirmed: boolean;
 };
 
 const UserAndPass = () => {
@@ -17,15 +18,16 @@ const UserAndPass = () => {
     password: "",
     name: "",
     email: "",
+    confirmed: true, // Pastikan field "confirmed" sesuai dengan status akun
   });
   const [editMode, setEditMode] = useState(false);
 
-  // Fetch Users from API
+  // Ambil data pengguna dari Strapi
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await api.get("/penghuni");
-        setUsers(response.data.data);
+        const response = await api.get("/users");
+        setUsers(response.data); // Menyimpan data pengguna ke state
       } catch (error) {
         console.error("Error fetching users:", error);
       }
@@ -34,6 +36,7 @@ const UserAndPass = () => {
     fetchUsers();
   }, []);
 
+  // Handle perubahan input form
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -42,35 +45,52 @@ const UserAndPass = () => {
     });
   };
 
+  // Menambah atau memperbarui pengguna
   const handleAddOrUpdateUser = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      const requestData = {
+        username: formData.username,
+        password: formData.password,
+        email: formData.email,
+        name: formData.name,
+        confirmed: formData.confirmed,
+        role: 2, // Pastikan menggunakan ID role yang benar (misalnya, 2 untuk role "authenticated")
+      };
+  
       if (editMode) {
-        await api.put(`/penghuni/${formData.id}`, formData);
+        // Update pengguna yang sudah ada
+        await api.put(`/users/${formData.id}`, requestData);
       } else {
-        await api.post("/penghuni", { data: formData });
+        // Tambah pengguna baru
+        await api.post("/users", requestData);
       }
-      // Reset form data after successful submit
-      setFormData({ username: "", password: "", name: "", email: "" });
-      setEditMode(false); // Reset edit mode
-      // Fetch the updated user list
-      const response = await api.get("/penghuni");
-      setUsers(response.data.data);
+  
+      // Reset form setelah berhasil
+      setFormData({ username: "", password: "", name: "", email: "", confirmed: true });
+      setEditMode(false);
+  
+      // Ambil daftar pengguna yang diperbarui
+      const response = await api.get("/users");
+      setUsers(response.data);
     } catch (error) {
       console.error("Error adding/updating user:", error);
     }
   };
+  
 
+  // Mengedit pengguna
   const handleEdit = (user: User) => {
     setFormData(user);
     setEditMode(true);
   };
 
+  // Menghapus pengguna
   const handleDelete = async (userId: number) => {
     try {
-      await api.delete(`/penghuni/${userId}`);
-      const response = await api.get("/penghuni");
-      setUsers(response.data.data);
+      await api.delete(`/users/${userId}`); // Hapus pengguna berdasarkan ID
+      const response = await api.get("/users"); // Ambil kembali daftar pengguna yang terbaru
+      setUsers(response.data);
     } catch (error) {
       console.error("Error deleting user:", error);
     }
@@ -78,10 +98,10 @@ const UserAndPass = () => {
 
   return (
     <div className="container">
-      <h1>User and Password Management</h1>
+      <h1>Manajemen Pengguna dan Password</h1>
 
       <form onSubmit={handleAddOrUpdateUser}>
-        <h2>{editMode ? "Edit User" : "Add New User"}</h2>
+        <h2>{editMode ? "Edit Pengguna" : "Tambah Pengguna Baru"}</h2>
 
         <div className="form-group">
           <label>Username:</label>
@@ -106,7 +126,7 @@ const UserAndPass = () => {
         </div>
 
         <div className="form-group">
-          <label>Name:</label>
+          <label>Nama:</label>
           <input
             type="text"
             name="name"
@@ -128,19 +148,20 @@ const UserAndPass = () => {
         </div>
 
         <button type="submit" className="user-button">
-          {editMode ? "Update" : "Add"} User
+          {editMode ? "Perbarui" : "Tambah"} Pengguna
         </button>
       </form>
 
-      <h2>User List</h2>
+      <h2>Daftar Pengguna</h2>
       <table>
         <thead>
           <tr>
             <th>Username</th>
             <th>Password</th>
-            <th>Name</th>
+            <th>Nama</th>
             <th>Email</th>
-            <th>Actions</th>
+            <th>Konfirmasi</th>
+            <th>Aksi</th>
           </tr>
         </thead>
         <tbody>
@@ -150,12 +171,13 @@ const UserAndPass = () => {
               <td>{user.password}</td>
               <td>{user.name}</td>
               <td>{user.email}</td>
+              <td>{user.confirmed ? "Terkonfirmasi" : "Belum Terkonfirmasi"}</td>
               <td>
                 <button className="action-button" onClick={() => handleEdit(user)}>
                   Edit
                 </button>
                 <button className="action-button" onClick={() => handleDelete(user.id!)}>
-                  Delete
+                  Hapus
                 </button>
               </td>
             </tr>

@@ -399,6 +399,37 @@ export interface ApiKamarKamar extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPasswordPassword extends Struct.CollectionTypeSchema {
+  collectionName: 'passwords';
+  info: {
+    displayName: 'Password';
+    pluralName: 'passwords';
+    singularName: 'password';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Email: Schema.Attribute.Email;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::password.password'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
+    Password: Schema.Attribute.Password;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Username: Schema.Attribute.String;
+  };
+}
+
 export interface ApiPaymentPayment extends Struct.CollectionTypeSchema {
   collectionName: 'payments';
   info: {
@@ -1033,6 +1064,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::kamar.kamar': ApiKamarKamar;
+      'api::password.password': ApiPasswordPassword;
       'api::payment.payment': ApiPaymentPayment;
       'api::penghuni.penghuni': ApiPenghuniPenghuni;
       'api::tagihan.tagihan': ApiTagihanTagihan;
