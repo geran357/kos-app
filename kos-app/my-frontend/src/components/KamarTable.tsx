@@ -7,14 +7,14 @@ const KamarTable = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<string | null>(null);
+  const [editingKamar, setEditingKamar] = useState<any | null>(null);
+  const [penghuni, setPenghuni] = useState<string>("");
 
-  // Enumeration untuk status_kamar
   enum StatusKamar {
     KOSONG = "Kosong",
     TERISI = "Terisi",
   }
 
-  // Mengambil data kamar dari server
   const fetchKamarData = async () => {
     setLoading(true);
     try {
@@ -29,30 +29,24 @@ const KamarTable = () => {
     }
   };
 
-  // Mengubah status kamar berdasarkan documentId
   const handleEditStatusByDocumentId = async (
     documentId: string,
     currentStatus: string
   ) => {
-    // Tentukan status baru
     const newStatus =
       currentStatus === StatusKamar.TERISI
         ? StatusKamar.KOSONG
         : StatusKamar.TERISI;
 
     try {
-      // Kirim permintaan pembaruan ke server dengan documentId di URL
       const response = await axios.put(
         `http://localhost:1337/api/kamars/${documentId}`,
         {
-          data: {
-            status_kamar: newStatus,
-          },
+          data: { status_kamar: newStatus },
         }
       );
 
       if (response.status === 200) {
-        // Perbarui data kamar di state
         setKamarData((prevData) =>
           prevData.map((k) =>
             k.documentId === documentId
@@ -65,39 +59,49 @@ const KamarTable = () => {
         alert("Gagal memperbarui status kamar.");
       }
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error(
-          "Error updating kamar status:",
-          error.response?.data || error
-        );
-        alert(
-          `Gagal memperbarui status kamar: ${
-            error.response?.data?.error?.message || "Terjadi kesalahan."
-          }`
-        );
-      } else {
-        console.error("Unexpected error:", error);
-        alert("Terjadi kesalahan yang tidak terduga.");
-      }
+      console.error("Error updating status:", error);
+      alert("Gagal memperbarui status kamar.");
     }
   };
 
-  // Memuat data kamar saat komponen pertama kali dirender
+  const handleEditPenghuni = async (documentId: string, penghuniBaru: string) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:1337/api/kamars/${documentId}`,
+        {
+          data: { penghuni: penghuniBaru },
+        }
+      );
+
+      if (response.status === 200) {
+        setKamarData((prevData) =>
+          prevData.map((k) =>
+            k.documentId === documentId ? { ...k, penghuni: penghuniBaru } : k
+          )
+        );
+        alert("Data penghuni berhasil diperbarui!");
+        setEditingKamar(null);
+      } else {
+        alert("Gagal memperbarui data penghuni.");
+      }
+    } catch (error) {
+      console.error("Error updating penghuni data:", error);
+      alert("Gagal memperbarui data penghuni.");
+    }
+  };
+
   useEffect(() => {
     fetchKamarData();
   }, []);
 
-  // Filter data berdasarkan status
   const filteredKamarData = filter
     ? kamarData.filter((kamar) => kamar.status_kamar === filter)
     : kamarData;
 
-  // Jika sedang memuat data
   if (loading) {
     return <p>Loading data kamar...</p>;
   }
 
-  // Jika terjadi kesalahan
   if (error) {
     return <p className="error-message">{error}</p>;
   }
@@ -106,7 +110,6 @@ const KamarTable = () => {
     <div className="kamar-table-container">
       <h2>Daftar Kamar</h2>
 
-      {/* Tombol Filter */}
       <div className="filter-buttons">
         <button onClick={() => setFilter(StatusKamar.KOSONG)}>Kosong</button>
         <button onClick={() => setFilter(StatusKamar.TERISI)}>Terisi</button>
@@ -120,6 +123,7 @@ const KamarTable = () => {
             <th>Harga Per Bulan</th>
             <th>Harga Per Tahun</th>
             <th>Status Kamar</th>
+            <th>Penghuni</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -130,9 +134,16 @@ const KamarTable = () => {
               <td>Rp. {kamar.harga_per_bulan.toLocaleString()}</td>
               <td>Rp. {kamar.harga_per_tahun.toLocaleString()}</td>
               <td>{kamar.status_kamar}</td>
+              <td>{kamar.penghuni || "Belum Ada"}</td>
               <td>
                 <button
                   className="edit-button"
+                  onClick={() => setEditingKamar(kamar)}
+                >
+                  Edit Penghuni
+                </button>
+                <button
+                  className="status-button"
                   onClick={() =>
                     handleEditStatusByDocumentId(
                       kamar.documentId,
@@ -147,6 +158,34 @@ const KamarTable = () => {
           ))}
         </tbody>
       </table>
+
+      {editingKamar && (
+        <div className="modal">
+          <div className="modal-content">
+            <h3>Edit Penghuni Kamar</h3>
+            <p>No Kamar: {editingKamar.no_kamar}</p>
+            <label>
+              Nama Penghuni:
+              <input
+                type="text"
+                value={penghuni}
+                onChange={(e) => setPenghuni(e.target.value)}
+                placeholder="Masukkan nama penghuni"
+              />
+            </label>
+            <div className="modal-actions">
+              <button
+                onClick={() =>
+                  handleEditPenghuni(editingKamar.documentId, penghuni)
+                }
+              >
+                Simpan
+              </button>
+              <button onClick={() => setEditingKamar(null)}>Batal</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
