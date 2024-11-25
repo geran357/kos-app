@@ -1,105 +1,120 @@
-/* KamarTable.css */
+/* Container utama tabel kamar */
 .kamar-table-container {
   margin: 20px auto;
   width: 90%;
   max-width: 1200px;
   text-align: center;
   font-family: 'Poppins', sans-serif;
-  color: #444;
+  color: #d0d6db; /* Warna teks abu terang */
+  background-color: #273c4e; /* Latar belakang biru tua */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan */
 }
 
+/* Judul tabel kamar */
 .kamar-table-container h2 {
   margin-bottom: 20px;
   font-size: 2rem;
-  color: #333;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  color: #ffffff; /* Teks putih */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Bayangan teks */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
+/* Tabel utama */
 .kamar-table {
   width: 100%;
   border-collapse: collapse;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #2c3e50; /* Warna latar tabel */
+  border-radius: 10px; /* Tabel dengan sudut melengkung */
   overflow: hidden;
-  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
 }
 
 .kamar-table th,
 .kamar-table td {
   padding: 15px 20px;
-  border: 1px solid #ddd;
   text-align: center;
   font-size: 1rem;
+  border: 1px solid #3b4f63; /* Garis pemisah antar sel */
 }
 
 .kamar-table th {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #3498db; /* Biru cerah */
+  color: #ffffff; /* Teks putih */
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
 .kamar-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #273c4e; /* Baris warna berbeda */
 }
 
 .kamar-table tr:hover {
-  background-color: #f1f1f1;
+  background-color: #1abc9c; /* Hijau terang saat hover */
+  color: #ffffff; /* Teks putih */
   transform: scale(1.02);
   transition: all 0.2s ease-in-out;
 }
 
 .kamar-table td {
   font-size: 0.95rem;
-  color: #555;
+  color: #d0d6db; /* Warna teks abu terang */
 }
 
 .kamar-table td:first-child {
   font-weight: bold;
 }
 
+/* Tombol dalam tabel */
 .kamar-table button {
   padding: 8px 16px;
-  background-color: #007bff;
+  background-color: #007bff; /* Warna biru */
   color: white;
   border: none;
-  border-radius: 20px;
+  border-radius: 20px; /* Tombol dengan ujung bulat */
   cursor: pointer;
   font-size: 0.9rem;
-  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3); /* Bayangan tombol */
   transition: all 0.3s ease-in-out;
 }
 
 .kamar-table button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Biru gelap pada hover */
   transform: scale(1.1);
   box-shadow: 0 6px 10px rgba(0, 86, 179, 0.4);
 }
 
+/* Tombol filter */
 .filter-buttons {
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .filter-buttons button {
-  margin: 0 10px;
+  margin: 5px;
   padding: 8px 16px;
-  background-color: #6c757d;
+  background-color: #3498db; /* Biru cerah */
   color: white;
   border: none;
   border-radius: 20px;
   cursor: pointer;
   font-size: 1rem;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3); /* Bayangan tombol */
   transition: all 0.3s ease-in-out;
 }
 
 .filter-buttons button:hover {
-  background-color: #5a6268;
-  transform: translateY(-3px);
+  background-color: #0056b3; /* Biru yang lebih gelap */
+  transform: translateY(-3px); /* Efek hover */
 }
 
+/* Pesan error */
 .error-message {
   color: red;
   font-weight: bold;
   margin-top: 20px;
+  text-align: center;
 }

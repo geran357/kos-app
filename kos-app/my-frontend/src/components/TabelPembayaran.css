@@ -2,62 +2,69 @@
 .table-container {
   margin: 20px auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  max-width: 90%; /* Batas lebar maksimal */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow untuk kesan 3D */
+  border-radius: 10px;
+  background-color: #273c4e; /* Warna biru tua */
+  max-width: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow untuk kesan 3D */
+  color: #d0d6db; /* Teks abu terang */
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Table styling */
 .payment-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px; /* Ukuran font untuk tabel */
+  font-size: 14px;
+  color: #d0d6db; /* Warna teks tabel */
 }
 
 .payment-table th {
-  background-color: #008cff;
-  color: white;
+  background-color: #3498db; /* Biru cerah */
+  color: #ffffff; /* Teks putih */
   text-transform: uppercase;
   font-weight: bold;
-  padding: 12px;
+  padding: 15px;
+  text-align: center;
 }
 
 .payment-table td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  vertical-align: middle; /* Untuk menengah */
+  padding: 12px 15px;
+  border: 1px solid #3b4f63; /* Garis pemisah */
+  vertical-align: middle;
+  text-align: center;
 }
 
 .payment-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #2c3e50; /* Warna latar bergantian */
 }
 
 .payment-table tr:hover {
-  background-color: #f1f1f1;
-  cursor: pointer;
+  background-color: #1abc9c; /* Hijau terang pada hover */
+  color: #ffffff; /* Teks putih saat hover */
+  transform: scale(1.02);
+  transition: all 0.2s ease-in-out;
 }
 
 /* Button styling for unique class */
 .payment-btn {
-  padding: 8px 16px;
+  padding: 10px 18px;
   border: none;
-  border-radius: 4px;
-  background-color: #4caf50;
+  border-radius: 20px;
+  background-color: #007bff; /* Biru tema */
   color: white;
   font-size: 14px;
   cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .payment-btn:hover {
-  background-color: #45a049;
+  background-color: #0056b3; /* Biru gelap saat hover */
   transform: scale(1.05); /* Sedikit efek zoom saat hover */
 }
 
 .payment-btn:disabled {
-  background-color: #ccc;
+  background-color: #3b4f63; /* Warna abu gelap untuk tombol dinonaktifkan */
   cursor: not-allowed;
 }
 
@@ -69,37 +76,37 @@
 
 .filter-container button {
   margin: 5px;
-  padding: 8px 16px;
+  padding: 10px 20px;
   border: none;
-  border-radius: 4px;
-  background-color: #007bff;
+  border-radius: 20px;
+  background-color: #3498db; /* Biru cerah */
   color: white;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .filter-container button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Biru gelap */
+  transform: scale(1.05); /* Efek hover */
 }
 
 /* Responsive styling */
 @media (max-width: 768px) {
   .payment-table th,
   .payment-table td {
-      font-size: 12px;
-      padding: 8px;
+    font-size: 12px;
+    padding: 8px;
   }
 
   .payment-btn {
-      font-size: 12px;
-      padding: 5px 10px;
+    font-size: 12px;
+    padding: 8px 12px;
   }
 
   .filter-container button {
-      font-size: 12px;
-      padding: 6px 10px;
+    font-size: 12px;
+    padding: 8px 12px;
   }
 }
-
-

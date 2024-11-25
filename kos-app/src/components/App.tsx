@@ -18,6 +18,7 @@ import ControlPenghuni from "../pages/Pages_beranda_admin/controlPenghuni";
 import ControlUserPass from "../pages/Pages_beranda_admin/controlUserPass"; // Perbaiki nama import
 import "./App.css";
 import "./Navbar.css"; // Mengimpor Navbar.css
+import Login2 from "../pages/Login2";
 
 const App: React.FC = () => {
   return (
@@ -35,7 +36,7 @@ const App: React.FC = () => {
                   <Link to="/login">Login user</Link>
                 </li>
                 <li>
-                  <Link to="/adminPage">Login Admin</Link>{" "}
+                  <Link to="/login2">Login Admin</Link>{" "}
                   {/* Tautan ke halaman admin */}
                 </li>
               </ul>
@@ -47,6 +48,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           {/* Halaman Login */}
           <Route path="/login" element={<Login />} />
+          <Route path="/login2" element={<Login2 />} />
           <Route path="/lupaPassword" element={<LupaPassword />} />
           {/* Halaman Penghuni */}
           <Route path="/penghuniWelcome" element={<WelcomePage />} />

@@ -19,7 +19,7 @@ const PenghuniWelcome: React.FC = () => {
           <div className="profile-picture"></div>
           <div className="profile-info">
             <p className="name">{username}</p>
-            <p className="role">Penghuni kos</p>
+            <p className="role">Admin</p>
           </div>
         </div>
 

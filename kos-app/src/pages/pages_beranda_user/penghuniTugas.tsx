@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./css/penghuniTugas.css";
 
 interface Task {
@@ -12,6 +13,7 @@ interface Task {
 const ChecklistTasks: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [countdown, setCountdown] = useState<string>("");
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const allCompleted = tasks.every((task) => task.completed);
 
@@ -45,7 +47,6 @@ const ChecklistTasks: React.FC = () => {
         (currentDate.getTime() - lastReset.getTime()) / (1000 * 3600 * 24)
       );
 
-      // Jika sudah lebih dari 7 hari, reset tugas
       if (diffInDays >= 7) {
         setTasks((prevTasks) =>
           prevTasks.map((task) => ({ ...task, completed: false }))
@@ -53,7 +54,6 @@ const ChecklistTasks: React.FC = () => {
         localStorage.setItem("lastResetDate", currentDate.toISOString());
       }
 
-      // Menghitung waktu mundur
       const resetDate = new Date(lastReset.getTime() + 7 * 24 * 60 * 60 * 1000);
       updateCountdown(resetDate);
     } else {
@@ -61,7 +61,6 @@ const ChecklistTasks: React.FC = () => {
     }
   }, []);
 
-  // Update countdown setiap detik
   const updateCountdown = (resetDate: Date) => {
     const interval = setInterval(() => {
       const now = new Date();
@@ -77,7 +76,7 @@ const ChecklistTasks: React.FC = () => {
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
         setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`);
       }
-    }, 1000); // Update setiap detik
+    }, 1000);
   };
 
   const toggleTask = (documentId: string) => {
@@ -142,7 +141,7 @@ const ChecklistTasks: React.FC = () => {
   };
 
   const handleBack = () => {
-    console.log("Back button clicked");
+    navigate("/penghuniWelcome"); // Navigate to penghuniWelcome.tsx route
   };
 
   return (

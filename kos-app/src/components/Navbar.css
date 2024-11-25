@@ -1,72 +1,124 @@
-/* Gaya untuk header */
+/* Wrapper Header */
 .header-wrapper {
   width: 100%;
-  background-color: #afafaf; /* Warna latar belakang penuh */
-  display: flex; /* Menggunakan flex untuk centering */
-  justify-content: center; /* Centering horizontal */
-  padding: 0 20px; /* Tambahkan padding kiri-kanan */
-  box-sizing: border-box; /* Sertakan padding  dalam lebar */
+  background-color: #1e2a38; /* Warna biru tua */
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan untuk dimensi */
+  position: sticky;
+  top: 0; /* Navbar tetap di atas saat scroll */
+  z-index: 1000;
 }
 
+/* Header Utama */
 .header {
-  color: #afafaf; /* Warna teks */
   display: flex;
   width: 100%;
-  max-width: 1200px; /* Sesuaikan lebar maksimum */
-  height: 75px; /* Tinggi tetap */
-  align-items: center; /* Posisikan item vertikal di tengah */
-  justify-content: space-between; /* Jarak antar elemen */
-  padding: 0 20px; /* Padding kiri-kanan tetap */
-  box-sizing: border-box; /* Sertakan padding dalam lebar */
+  max-width: 1200px;
+  height: 80px; /* Sedikit lebih tinggi */
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+  color: #d0d6db; /* Warna teks */
+  font-family: 'Poppins', sans-serif; /* Font modern */
 }
 
+/* Logo */
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff; /* Teks putih */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Bayangan teks */
+  transition: color 0.3s ease-in-out;
+}
+
+.logo:hover {
+  color: #1abc9c; /* Warna hijau saat hover */
+  cursor: pointer;
+}
+
+/* Media Query untuk Layar Kecil */
 @media (max-width: 768px) {
   .header {
-      flex-direction: column; /* Susun elemen secara vertikal */
-      height: auto; /* Tinggi menyesuaikan isi */
-      padding: 10px; /* Padding lebih kecil */
+    flex-direction: column; /* Susun vertikal */
+    height: auto; /* Tinggi mengikuti isi */
+    padding: 10px;
   }
 
   .header nav {
-      display: flex;
-      flex-wrap: wrap; /* Bungkus elemen jika terlalu banyak */
-      justify-content: center; /* Pusatkan elemen pada layar kecil */
-  }
-
-  .header nav a {
-      margin: 5px; /* Jarak antar item */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
-/* Gaya untuk navbar */
+/* Navbar */
 .navbar {
-  margin-top: 10px; /* Jarak atas navbar */
+  margin-top: 10px;
 }
 
-/* Gaya untuk daftar link */
+/* Daftar Link */
 .nav-links {
-  list-style-type: none; /* Menghilangkan bullet points */
-  padding: 0; /* Menghilangkan padding */
-  display: flex; /* Menyusun item dalam baris */
-  justify-content: center; /* Rata tengah */
-  flex-wrap: wrap; /* Bungkus elemen jika terlalu banyak */
+  list-style: none; /* Hilangkan bullet points */
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Spasi antar link */
 }
 
-/* Gaya untuk setiap link */
-.nav-links li {
-  margin: 0 15px; /* Jarak antara item */
-}
-
-/* Gaya untuk tautan */
+/* Tautan */
 .nav-links a {
-  color: white; /* Warna teks tautan */
-  text-decoration: none; /* Menghilangkan garis bawah */
-  font-weight: bold; /* Menebalkan teks */
-  transition: color 0.3s; /* Transisi warna saat hover */
-  padding: 10px 15px; /* Tambahkan padding untuk tautan */
+  color: #d0d6db; /* Warna teks */
+  text-decoration: none; /* Hilangkan garis bawah */
+  font-weight: 600;
+  padding: 10px 20px; /* Padding untuk ukuran klik yang nyaman */
+  border-radius: 5px; /* Sudut melengkung */
+  transition: all 0.3s ease-in-out; /* Efek transisi */
+  position: relative;
 }
 
-/* Gaya untuk tautan saat hover */
+/* Efek Hover */
 .nav-links a:hover {
-  color: #ffdd57; /* Warna saat hover */
+  color: #ffffff; /* Teks putih */
+  background-color: #3498db; /* Biru cerah saat hover */
+  transform: translateY(-2px); /* Sedikit naik */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan saat hover */
+}
+
+/* Garis Bawah Animasi */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px; /* Garis muncul di bawah teks */
+  left: 50%;
+  background-color: #1abc9c; /* Warna hijau */
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+  width: 100%; /* Panjang penuh saat hover */
+}
+
+/* Tautan Aktif */
+.nav-links a.active {
+  background-color: #1abc9c; /* Hijau terang */
+  color: #ffffff;
+  font-weight: bolder;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

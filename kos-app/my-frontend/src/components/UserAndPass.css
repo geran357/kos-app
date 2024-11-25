@@ -1,107 +1,122 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-  }
-  
-  .container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    text-align: center;
-    color: #333;
-  }
-  
-  h2 {
-    margin-top: 30px;
-    color: #444;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  /* Styling Button Specific to the Form */
-  .user-button {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .user-button:hover {
-    background-color: #45a049;
-  }
-  
-  table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  th,
-  td {
-    padding: 12px;
-    text-align: left;
-    border: 1px solid #ddd;
-  }
-  
-  th {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  /* Styling Button Specific to the Table Actions */
-  .action-button {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin: 0 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .action-button:hover {
-    background-color: #d32f2f;
-  }
-  
+  font-family: 'Poppins', sans-serif; /* Menggunakan font modern */
+  margin: 0;
+  padding: 0;
+  background-color: #1e2a38; /* Warna latar belakang biru tua */
+  color: #d0d6db; /* Warna teks abu terang */
+}
+
+/* Container utama */
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #273c4e; /* Warna biru tua untuk latar belakang container */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+}
+
+/* Heading utama */
+h1 {
+  text-align: center;
+  color: #ffffff; /* Teks putih */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Bayangan teks */
+  text-transform: uppercase;
+}
+
+/* Subheading */
+h2 {
+  margin-top: 30px;
+  color: #ffffff; /* Teks putih */
+}
+
+/* Formulir */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #3b4f63; /* Border biru tua */
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #2c3e50; /* Latar belakang input */
+  color: #d0d6db; /* Warna teks */
+}
+
+/* Tombol utama formulir */
+.user-button {
+  padding: 10px;
+  background-color: #3498db; /* Biru cerah */
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.user-button:hover {
+  background-color: #1abc9c; /* Hijau terang saat hover */
+}
+
+/* Tabel */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan */
+  background-color: #273c4e; /* Warna tabel */
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #3b4f63; /* Garis pemisah antar sel */
+  color: #d0d6db; /* Warna teks */
+}
+
+th {
+  background-color: #3498db; /* Header tabel biru cerah */
+  color: #ffffff; /* Teks putih */
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+  background-color: #2c3e50; /* Baris berbeda */
+}
+
+tr:hover {
+  background-color: #1abc9c; /* Warna hijau terang saat hover */
+  color: #ffffff; /* Teks putih */
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Tombol tindakan pada tabel */
+.action-button {
+  background-color: #e74c3c; /* Warna merah */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 0 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-button:hover {
+  background-color: #c0392b; /* Merah gelap saat hover */
+  transform: scale(1.1); /* Efek zoom saat hover */
+}

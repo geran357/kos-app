@@ -5,8 +5,7 @@ body {
   box-sizing: border-box;
 }
 
-
-
+/* Header */
 .header h1 {
   margin: 0;
   color: #000;
@@ -26,6 +25,7 @@ body {
   text-decoration: underline;
 }
 
+/* Main Application */
 .app main {
   padding: 20px;
   max-width: 1200px; /* Menentukan lebar maksimum */
@@ -39,6 +39,7 @@ body {
   margin-bottom: 45px;
 }
 
+/* Grid Layout for Rooms */
 .room-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -50,4 +51,32 @@ body {
   margin: 0 auto; /* Centering */
 }
 
-.footer-wrapper { width: 100%; background-color: #afafaf; /* Warna latar belakang penuh */ display: flex; justify-content: center; /* Centering horizontal */ } .footer { color: white; /* Warna teks */ text-align: center; padding: 10px; max-width: 1200px; /* Menentukan lebar maksimum */ width: 100%; box-sizing: border-box; /* Sertakan padding dalam lebar */ margin-left: 250px; /* Same as sidebar width */ }
+/* Footer Wrapper */
+.footer-wrapper {
+  width: 100%;
+  background-color: #273c4e; /* Warna latar belakang biru gelap */
+  display: flex;
+  justify-content: center; /* Centering horizontal */
+  padding: 20px 0; /* Padding atas dan bawah */
+}
+
+/* Footer */
+.footer {
+  color: white; /* Warna teks putih */
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px; /* Lebar maksimum */
+  box-sizing: border-box;
+  font-size: 14px; /* Ukuran font */
+}
+
+/* Tautan di footer */
+.footer a {
+  color: #ffdd57; /* Warna kuning terang untuk tautan */
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #3498db; /* Warna biru terang saat hover */
+}

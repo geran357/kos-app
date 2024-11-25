@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
 import "./css/penghuniPembayaran.css"; // Pastikan menggunakan file CSS yang sesuai
 
 const PenghuniPembayaran: React.FC = () => {
   const [paymentDetails, setPaymentDetails] = useState<any>(null);
+  const navigate = useNavigate(); // Inisialisasi useNavigate
 
   // Ambil data pembayaran dari Strapi tanpa ID
   useEffect(() => {
@@ -16,7 +18,7 @@ const PenghuniPembayaran: React.FC = () => {
         console.error("Gagal mengambil data:", error);
       }
     };
-    
+
     fetchPaymentDetails();
   }, []);
 
@@ -27,6 +29,10 @@ const PenghuniPembayaran: React.FC = () => {
 
   // Ambil properti langsung dari paymentDetails
   const { Items, Total, Pembayaran_Visa_Mandiri, Status_Pembayaran } = paymentDetails;
+
+  const handleBack = () => {
+    navigate("/penghuniWelcome"); // Kembali ke halaman penghuniWelcome
+  };
 
   return (
     <div className="payment-container">
@@ -58,6 +64,10 @@ const PenghuniPembayaran: React.FC = () => {
           </span>
         </div>
       </div>
+      {/* Tambahkan tombol kembali */}
+      <button onClick={handleBack} className="back-button">
+        Kembali
+      </button>
     </div>
   );
 };
