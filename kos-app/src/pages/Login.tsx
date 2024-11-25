@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Mengimpor useNavigate untuk navigasi
-import { loginUser } from "../pages/Data/LoginUser"; // Mengimpor fungsi loginUser
-import "../pages/Login.css"; // Mengimpor CSS untuk halaman login
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "../pages/Data/LoginUser";
+import "../pages/Login.css";
 
 const Login: React.FC = () => {
-  const [identifier, setIdentifier] = useState<string>(""); // Menyimpan username/email
-  const [password, setPassword] = useState<string>(""); // Menyimpan password
-  const [error, setError] = useState<string>(""); // Menyimpan pesan error
-  const [loading, setLoading] = useState<boolean>(false); // Menyimpan status loading
-  const navigate = useNavigate(); // Menggunakan useNavigate untuk navigasi
+  const [identifier, setIdentifier] = useState<string>(""); // Username/Email
+  const [password, setPassword] = useState<string>(""); // Password
+  const [error, setError] = useState<string>(""); // Pesan error
+  const [loading, setLoading] = useState<boolean>(false); // Status loading
+  const navigate = useNavigate(); // Navigasi
 
   const handleLogin = async (): Promise<void> => {
     if (!identifier || !password) {
@@ -16,31 +16,56 @@ const Login: React.FC = () => {
       return;
     }
 
-    setLoading(true); // Menandakan loading dimulai
+    setLoading(true); // Mulai loading
+    const result = await loginUser(identifier, password); // Panggil loginUser
 
-    // Panggil fungsi loginUser untuk autentikasi
-    const result = await loginUser(identifier, password);
-
-    // Jika ada error, tampilkan pesan error
     if (result.error) {
       setError(result.error);
-      setLoading(false); // Selesai loading
+      setLoading(false);
       return;
     }
 
-    // Jika login berhasil, arahkan pengguna ke halaman berikutnya
-    navigate("/penghuniWelcome6"); // Ganti dengan route yang sesuai
+    const user = result.userData;
+    if (!user.Nama) {
+      alert("Hubungi pemilik kosan untuk memperbaiki akun.");
+      setLoading(false);
+      return;
+    }
+
+    // Arahkan ke halaman sesuai dengan Nama (kamar1, kamar2, dst)
+    switch (user.Nama) {
+      case "kamar1":
+        navigate("/penghuniWelcome");
+        break;
+      case "kamar2":
+        navigate("/penghuniWelcome2");
+        break;
+      case "kamar3":
+        navigate("/penghuniWelcome3");
+        break;
+      case "kamar4":
+        navigate("/penghuniWelcome4");
+        break;
+      case "kamar5":
+        navigate("/penghuniWelcome5");
+        break;
+      case "kamar6":
+        navigate("/penghuniWelcome6");
+        break;
+      default:
+        alert("Nama kamar tidak valid.");
+        break;
+    }
   };
 
   const handleForgotPassword = (): void => {
-    navigate("/lupaPassword"); // Navigasi ke halaman lupa password
+    navigate("/lupaPassword");
   };
 
   return (
     <div className="login-container">
       <h2 className="login-title">Login</h2>
-      {error && <p className="error-message">{error}</p>}{" "}
-      {/* Menampilkan pesan error */}
+      {error && <p className="error-message">{error}</p>}
       <div className="input-container">
         <div className="icon">
           <img
