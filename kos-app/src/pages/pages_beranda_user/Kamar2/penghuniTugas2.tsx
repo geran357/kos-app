@@ -20,7 +20,10 @@ const ChecklistTasks2: React.FC = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await fetch("http://localhost:1337/api/tasks?populate=*");
+        // Memfilter berdasarkan documentId 'bgk1zirs20kuaxkeyvsmhbvt'
+        const response = await fetch(
+          "http://localhost:1337/api/tasks?filters[documentId][$eq]=bgk1zirs20kuaxkeyvsmhbvt&populate=*"
+        );
         const data = await response.json();
 
         const formattedTasks = data.data.map((task: any) => ({
@@ -141,7 +144,7 @@ const ChecklistTasks2: React.FC = () => {
   };
 
   const handleBack = () => {
-    navigate("/penghuniWelcome"); // Navigate to penghuniWelcome.tsx route
+    navigate(-1); // Kembali ke halaman sebelumnya
   };
 
   return (

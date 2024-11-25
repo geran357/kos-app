@@ -8,6 +8,7 @@ interface Task {
   title: string;
   completed: boolean;
   dateCompleted?: string;
+  kamar: string;  // Menambahkan field Kamar
 }
 
 const TaskTable: React.FC = () => {
@@ -26,6 +27,7 @@ const TaskTable: React.FC = () => {
         title: task.Title || "Tidak ada judul",
         completed: task.completed || false,
         dateCompleted: task.dateCompleted || null,
+        kamar: task.Kamar || "Tidak tersedia", // Menambahkan field Kamar
       }));
 
       setTasks(fetchedTasks); // Menyimpan data ke state
@@ -53,7 +55,7 @@ const TaskTable: React.FC = () => {
 
   return (
     <div className="task-table-container">
-      <h2>Daftar Tugas (Admin)</h2>
+      <h2>Monitoring Tugas (kamar)</h2>
       <table className="task-table">
         <thead>
           <tr>
@@ -61,6 +63,7 @@ const TaskTable: React.FC = () => {
             <th>ID Dokumen</th>
             <th>Status</th>
             <th>Tanggal Selesai</th>
+            <th>Kamar</th>  {/* Kolom baru untuk Kamar */}
           </tr>
         </thead>
         <tbody>
@@ -72,6 +75,7 @@ const TaskTable: React.FC = () => {
                 {task.completed ? "Selesai" : "Belum Selesai"}
               </td>
               <td>{task.dateCompleted ? new Date(task.dateCompleted).toLocaleString() : "-"}</td>
+              <td>{task.kamar}</td> {/* Menampilkan nilai Kamar */}
             </tr>
           ))}
         </tbody>

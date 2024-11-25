@@ -20,6 +20,9 @@
         },
         "dateCompleted": {
             "type": "date"
+        },
+        "Kamar": {
+            "type": "string"
         }
     }
 }

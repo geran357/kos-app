@@ -20,7 +20,9 @@ const ChecklistTasks: React.FC = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await fetch("http://localhost:1337/api/tasks?populate=*");
+        const response = await fetch(
+          "http://localhost:1337/api/tasks?filters[documentId][$eq]=na7gw245314wuhrshjzb93z6&populate=*"
+        ); // Filter berdasarkan documentId yang diinginkan
         const data = await response.json();
 
         const formattedTasks = data.data.map((task: any) => ({

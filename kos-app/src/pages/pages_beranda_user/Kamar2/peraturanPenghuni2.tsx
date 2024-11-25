@@ -1,12 +1,15 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import './css/peraturanPenghuni2.css';
 
 const PeraturanKos2: React.FC = () => {
-  const navigate = useNavigate();  // Hook untuk navigasi
-
+  
   const handleBackClick = () => {
-    navigate(-1);  // Kembali ke halaman sebelumnya
+    // Memeriksa apakah ada halaman sebelumnya dalam riwayat
+    if (window.history.length > 1) {
+      window.history.back();  // Menggunakan window.history.back() untuk kembali ke halaman sebelumnya
+    } else {
+      window.location.href = '/';  // Jika tidak ada halaman sebelumnya, arahkan ke halaman utama
+    }
   };
 
   return (
