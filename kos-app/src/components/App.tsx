@@ -3,12 +3,18 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "../pages/Home"; // Untuk Home
 import Login from "../pages/Login"; // Untuk Login
 import LupaPassword from "../pages/lupaPassword";
-import WelcomePage from "../pages/pages_beranda_user/penghuniWelcome";
-// Mengimpor dari beranda-user
-import PenghuniChat from "../pages/pages_beranda_user/penghuniChat";
-import PenghuniPembayaran from "../pages/pages_beranda_user/penghuniPembayaran";
-import PenghuniTugas from "../pages/pages_beranda_user/penghuniTugas";
-import PenghuniProfile from "../pages/pages_beranda_user/peraturanPenghuni"; // Pastikan ini benar
+import WelcomePage from "../pages/pages_beranda_user/Kamar1/penghuniWelcome";
+import PenghuniWelcome from "../pages/pages_beranda_user/Kamar2/penghuniWelcome2"; // Untuk kamar2
+// Mengimpor dari beranda kamar 1
+import PenghuniChat from "../pages/pages_beranda_user/Kamar1/penghuniChat";
+import PenghuniPembayaran from "../pages/pages_beranda_user/Kamar1/penghuniPembayaran";
+import PenghuniTugas from "../pages/pages_beranda_user/Kamar1/penghuniTugas";
+import PenghuniProfile from "../pages/pages_beranda_user/Kamar1/peraturanPenghuni"; // Pastikan ini benar
+// mengimport dari beranda kamar 2
+import penghuniChat2 from "../pages/pages_beranda_user/Kamar2/penghuniChat2"; // Untuk kamar2
+import PenghuniPembayaran2 from "../pages/pages_beranda_user/Kamar2/penghuniPembayaran2"; // Untuk kamar2
+import penghuniTugas2 from "../pages/pages_beranda_user/Kamar2/penghuniTugas2"; // Untuk kamar2
+import penghuniProfile2 from "../pages/pages_beranda_user/Kamar2/peraturanPenghuni2"; // Untuk kamar2
 // Mengimpor dari pages_beranda_admin
 import AdminPage from "../pages/Pages_beranda_admin/adminPage";
 import ControlKamar from "../pages/Pages_beranda_admin/controlKamar";
@@ -19,6 +25,11 @@ import ControlUserPass from "../pages/Pages_beranda_admin/controlUserPass"; // P
 import "./App.css";
 import "./Navbar.css"; // Mengimpor Navbar.css
 import Login2 from "../pages/Login2";
+import PeraturanKos from "../pages/pages_beranda_user/Kamar2/peraturanPenghuni2";
+import PenghuniWelcome2 from "../pages/pages_beranda_user/Kamar2/penghuniWelcome2";
+import ChecklistTasks2 from "../pages/pages_beranda_user/Kamar2/penghuniTugas2";
+import PeraturanKos2 from "../pages/pages_beranda_user/Kamar2/peraturanPenghuni2";
+import FAQs2 from "../pages/pages_beranda_user/Kamar1/penghuniChat";
 
 const App: React.FC = () => {
   return (
@@ -50,13 +61,18 @@ const App: React.FC = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/login2" element={<Login2 />} />
           <Route path="/lupaPassword" element={<LupaPassword />} />
-          {/* Halaman Penghuni */}
+          {/* Halaman kamar1 */}
           <Route path="/penghuniWelcome" element={<WelcomePage />} />
           <Route path="/penghuniChat" element={<PenghuniChat />} />
           <Route path="/penghuniPembayaran" element={<PenghuniPembayaran />} />
           <Route path="/penghuniTugas" element={<PenghuniTugas />} />
           <Route path="/peraturanPenghuni" element={<PenghuniProfile />} />{" "}
-          {/* Perbaikan path */}
+          {/* Halaman kamar2 */}
+          <Route path="/penghuniWelcome2" element={<PenghuniWelcome2 />} />
+          <Route path="/penghuniChat2" element={<FAQs2 />} />
+          <Route path="/penghuniPembayaran2" element={<PenghuniPembayaran2 />} />
+          <Route path="/penghuniTugas2" element={<ChecklistTasks2 />} />
+          <Route path="/peraturanPenghuni2" element={<PeraturanKos2 />} />
           {/* Halaman Admin */}
           <Route path="/adminPage" element={<AdminPage />} />
           <Route path="/controlKamar" element={<ControlKamar />} />

@@ -29,7 +29,7 @@ const Login: React.FC = () => {
     }
 
     // Jika login berhasil, arahkan pengguna ke halaman berikutnya
-    navigate("/penghuniWelcome"); // Ganti dengan route yang sesuai
+    navigate("/penghuniWelcome2"); // Ganti dengan route yang sesuai
   };
 
   const handleForgotPassword = (): void => {

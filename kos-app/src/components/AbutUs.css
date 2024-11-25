@@ -1,0 +1,122 @@
+/* Global Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #f5f7fa, #c3cfe2);
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  /* Background Decorations */
+  .background-decor {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 200vw;
+    height: 200vh;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0) 70%);
+    z-index: -1;
+    animation: moveBackground 15s linear infinite;
+  }
+  
+  @keyframes moveBackground {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+      transform: translate(-48%, -52%) rotate(180deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  
+  /* About Us Page Styling */
+  .about-us {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    width: 200px;
+    height: 250px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  
+  .card .front,
+  .card .back {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.6s ease-in-out; /* Smooth transition */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card .front {
+    background: #4caf50;
+    color: white;
+  }
+  
+  .card .back {
+    background: #2196f3;
+    color: white;
+    transform: rotateY(180deg);
+  }
+  
+  .card.flipped .front {
+    transform: rotateY(180deg);
+  }
+  
+  .card.flipped .back {
+    transform: rotateY(0);
+  }
+  
+  .back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .back-button:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Gimmick: Hover Effect */
+  .card .front:hover {
+    background: #45a049;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .card .back:hover {
+    background: #1e88e5;
+    transition: background 0.3s ease-in-out;
+  }
+  
