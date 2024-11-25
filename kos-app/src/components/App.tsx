@@ -5,6 +5,10 @@ import Login from "../pages/Login"; // Untuk Login
 import LupaPassword from "../pages/lupaPassword";
 import WelcomePage from "../pages/pages_beranda_user/Kamar1/penghuniWelcome";
 import PenghuniWelcome from "../pages/pages_beranda_user/Kamar2/penghuniWelcome2"; // Untuk kamar2
+import PenghuniWelcome3 from "../pages/pages_beranda_user/Kamar3/penghuniWelcome3";
+import PenghuniWelcome4 from "../pages/pages_beranda_user/Kamar4/penghuniWelcome4";
+import PenghuniWelcome5 from "../pages/pages_beranda_user/Kamar5/penghuniWelcome5";
+import PenghuniWelcome6 from "../pages/pages_beranda_user/Kamar6/penghuniWelcome6";
 // Mengimpor dari beranda kamar 1
 import PenghuniChat from "../pages/pages_beranda_user/Kamar1/penghuniChat";
 import PenghuniPembayaran from "../pages/pages_beranda_user/Kamar1/penghuniPembayaran";
@@ -15,6 +19,27 @@ import penghuniChat2 from "../pages/pages_beranda_user/Kamar2/penghuniChat2"; //
 import PenghuniPembayaran2 from "../pages/pages_beranda_user/Kamar2/penghuniPembayaran2"; // Untuk kamar2
 import penghuniTugas2 from "../pages/pages_beranda_user/Kamar2/penghuniTugas2"; // Untuk kamar2
 import penghuniProfile2 from "../pages/pages_beranda_user/Kamar2/peraturanPenghuni2"; // Untuk kamar2
+// mengimport dari beranda kamar 3
+import penghuniChat3 from "../pages/pages_beranda_user/Kamar3/penghuniChat3";
+import PenghuniPembayaran3 from "../pages/pages_beranda_user/Kamar3/penghuniPembayaran3";
+import penghuniTugas3 from "../pages/pages_beranda_user/Kamar3/penghuniTugas3";
+import penghuniProfile3 from "../pages/pages_beranda_user/Kamar3/peraturanPenghuni2";
+//mengimport dari beranda kamar 4
+import penghuniiChatt4 from "../pages/pages_beranda_user/Kamar4/penghuniChat4";
+import PenghuniPembayaran4 from "../pages/pages_beranda_user/Kamar4/penghuniPembayaran4";
+import FAQs4 from "../pages/pages_beranda_user/Kamar4/penghuniChat4";
+import ChecklistTasks4 from "../pages/pages_beranda_user/Kamar4/penghuniTugas4";
+import PeraturanKos4 from "../pages/pages_beranda_user/Kamar4/peraturanPenghuni2";
+//mengimport dari beranda kamar 5
+import penghuniChat5 from "../pages/pages_beranda_user/Kamar5/penghuniChat5";
+import PenghuniPembayaran5 from "../pages/pages_beranda_user/Kamar5/penghuniPembayaran5";
+import PenghuniTugas5 from "../pages/pages_beranda_user/Kamar5/penghuniTugas5";
+import PenghuniProfile5 from "../pages/pages_beranda_user/Kamar5/peraturanPenghuni5";
+//mengimport dari kamar 6
+import penghuniChat6 from "../pages/pages_beranda_user/Kamar6/penghuniChat6";
+import PenghuniPembayaran6 from "../pages/pages_beranda_user/Kamar6/penghuniPembayaran6";
+import PenghuniTugas6 from "../pages/pages_beranda_user/Kamar6/penghuniTugas6";
+import PenghuniProfile6 from "../pages/pages_beranda_user/Kamar6/peraturanPenghuni6";
 // Mengimpor dari pages_beranda_admin
 import AdminPage from "../pages/Pages_beranda_admin/adminPage";
 import ControlKamar from "../pages/Pages_beranda_admin/controlKamar";
@@ -30,6 +55,12 @@ import PenghuniWelcome2 from "../pages/pages_beranda_user/Kamar2/penghuniWelcome
 import ChecklistTasks2 from "../pages/pages_beranda_user/Kamar2/penghuniTugas2";
 import PeraturanKos2 from "../pages/pages_beranda_user/Kamar2/peraturanPenghuni2";
 import FAQs2 from "../pages/pages_beranda_user/Kamar1/penghuniChat";
+import PeraturanKos3 from "../pages/pages_beranda_user/Kamar3/peraturanPenghuni2";
+import ChecklistTasks3 from "../pages/pages_beranda_user/Kamar3/penghuniTugas3";
+import FAQs5 from "../pages/pages_beranda_user/Kamar5/penghuniChat5";
+import PeraturanKos5 from "../pages/pages_beranda_user/Kamar5/peraturanPenghuni5";
+import FAQs6 from "../pages/pages_beranda_user/Kamar6/penghuniChat6";
+import PeraturanKos6 from "../pages/pages_beranda_user/Kamar6/peraturanPenghuni6";
 
 const App: React.FC = () => {
   return (
@@ -61,6 +92,7 @@ const App: React.FC = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/login2" element={<Login2 />} />
           <Route path="/lupaPassword" element={<LupaPassword />} />
+          <Route path="/adminPage" element={<AdminPage />} />
           {/* Halaman kamar1 */}
           <Route path="/penghuniWelcome" element={<WelcomePage />} />
           <Route path="/penghuniChat" element={<PenghuniChat />} />
@@ -70,16 +102,48 @@ const App: React.FC = () => {
           {/* Halaman kamar2 */}
           <Route path="/penghuniWelcome2" element={<PenghuniWelcome2 />} />
           <Route path="/penghuniChat2" element={<FAQs2 />} />
-          <Route path="/penghuniPembayaran2" element={<PenghuniPembayaran2 />} />
+          <Route
+            path="/penghuniPembayaran2"
+            element={<PenghuniPembayaran2 />}
+          />
           <Route path="/penghuniTugas2" element={<ChecklistTasks2 />} />
           <Route path="/peraturanPenghuni2" element={<PeraturanKos2 />} />
+          {/* Halaman kamar3 */}
+          <Route path="/penghuniWelcome3" element={<PenghuniWelcome3 />} />
+          <Route path="/PenghuniChat3" element={<FAQs2 />} />
+          <Route
+            path="/penghuniPembayaran3"
+            element={<PenghuniPembayaran3 />}
+          />
+          <Route path="/penghuniTugas3" element={<ChecklistTasks3 />} />
+          <Route path="/peraturanPenghuni3" element={<PeraturanKos3 />} />
+          {/* Halaman kamar4 */}
+          <Route path="/penghuniWelcome4" element={<PenghuniWelcome4 />} />
+          <Route path="/PenghuniChat4" element={<FAQs4 />} />
+          <Route
+            path="/penghuniPembayaran4"
+            element={<PenghuniPembayaran4 />}
+          />
+          <Route path="/penghuniTugas4" element={<ChecklistTasks4 />} />
+          <Route path="/peraturanPenghuni4" element={<PeraturanKos4 />} />
+          {/* Halaman kamar5 */}
+          <Route path="/penghuniWelcome5" element={<PenghuniWelcome5 />} />
+          <Route path="/PenghuniChat5" element={<FAQs5 />} />
+          <Route path="/penghuniPembayaran5" element={<PenghuniPembayaran5 />} />
+          <Route path="/PenghuniTugas5" element={<PenghuniTugas5 />} />
+          <Route path="/peraturanPenghuni5" element={<PeraturanKos5 />} />
+          {/* Halaman kamar6 */}
+          <Route path="/penghuniWelcome6" element={<PenghuniWelcome6 />} />
+          <Route path="/penghuniChat6" element={<FAQs6 />} />
+          <Route path="/penghuniPembayaran6" element={<PenghuniPembayaran6 />} />
+          <Route path="/penghuniTugas6" element={<PenghuniTugas6 />} />
+          <Route path="/peraturanPenghuni6" element={<PeraturanKos6 />} />
           {/* Halaman Admin */}
-          <Route path="/adminPage" element={<AdminPage />} />
           <Route path="/controlKamar" element={<ControlKamar />} />
           <Route path="/controlKebersihan" element={<ControlKebersihan />} />
           <Route path="/controlPembayaran" element={<ControlPembayaran />} />
           <Route path="/controlPenghuni" element={<ControlPenghuni />} />
-          <Route path="/controlUserPass" element={<ControlUserPass />} />{" "}
+          <Route path="/controlUserPass" element={<ControlUserPass />} />
           {/* Perbaiki rute */}
         </Routes>
         <div className="footer-wrapper">

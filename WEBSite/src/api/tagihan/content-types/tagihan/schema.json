@@ -27,6 +27,9 @@
         "Belum",
         "Berhasil"
       ]
+    },
+    "Kamar": {
+      "type": "string"
     }
   }
 }

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-11-25T13:56:23.000Z"
+    "x-generation-date": "2024-11-25T15:36:08.090Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -6509,6 +6509,9 @@
                   "Berhasil"
                 ]
               },
+              "Kamar": {
+                "type": "string"
+              },
               "locale": {
                 "type": "string"
               },
@@ -6587,6 +6590,9 @@
               "Belum",
               "Berhasil"
             ]
+          },
+          "Kamar": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -6901,6 +6907,9 @@
                     "Belum",
                     "Berhasil"
                   ]
+                },
+                "Kamar": {
+                  "type": "string"
                 },
                 "createdAt": {
                   "type": "string",

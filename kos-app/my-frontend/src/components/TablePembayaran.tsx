@@ -11,6 +11,7 @@ type Payment = {
       amount: number;
     }[];
   };
+  Kamar: string; // Field baru
   Total: number;
   Pembayaran_Visa_Mandiri: string;
   Status_Pembayaran: string;
@@ -46,7 +47,6 @@ const TabelPembayaran: React.FC = () => {
   };
 
   const updateStatus = async (documentId: string, currentStatus: string) => {
-    // Tentukan status baru berdasarkan kondisi saat ini
     const newStatus = currentStatus === "Berhasil" ? "Belum" : "Berhasil";
 
     try {
@@ -66,7 +66,7 @@ const TabelPembayaran: React.FC = () => {
 
       if (response.status === 200) {
         alert("Status berhasil diperbarui!");
-        fetchPayments(); // Refresh data setelah pembaruan
+        fetchPayments();
       } else {
         throw new Error("Response status bukan 200");
       }
@@ -100,6 +100,7 @@ const TabelPembayaran: React.FC = () => {
               <th>No</th>
               <th>Document ID</th>
               <th>Items</th>
+              <th>Kamar</th>
               <th>Total</th>
               <th>Pembayaran Visa Mandiri</th>
               <th>Status Pembayaran</th>
@@ -120,6 +121,7 @@ const TabelPembayaran: React.FC = () => {
                     ))}
                   </ul>
                 </td>
+                <td>{payment.Kamar}</td> {/* Field baru */}
                 <td>Rp. {payment.Total.toLocaleString()}</td>
                 <td>{payment.Pembayaran_Visa_Mandiri}</td>
                 <td>{payment.Status_Pembayaran}</td>

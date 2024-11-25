@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import "./css/penghuniWelcome2.css";
+import "./css/penghuniWelcome3.css";
 
-const PenghuniWelcome2: React.FC = () => {
+const PenghuniWelcome3: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const navigate = useNavigate(); // Inisialisasi useNavigate
 
@@ -64,7 +64,7 @@ const PenghuniWelcome2: React.FC = () => {
           <div className="background">
             <h2>
               {" "}
-              <p>Selamat datang di platform penghuni kos2!</p>
+              <p>Selamat datang di platform penghuni kos3!</p>
             </h2>
           </div>
         </div>
@@ -73,4 +73,4 @@ const PenghuniWelcome2: React.FC = () => {
   );
 };
 
-export default PenghuniWelcome2;
+export default PenghuniWelcome3;

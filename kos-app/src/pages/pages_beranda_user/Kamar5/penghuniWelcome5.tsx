@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import "./css/penghuniWelcome2.css";
+import "./css/penghuniWelcome5.css";
 
-const PenghuniWelcome2: React.FC = () => {
+const PenghuniWelcome5: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const navigate = useNavigate(); // Inisialisasi useNavigate
 
@@ -29,25 +29,25 @@ const PenghuniWelcome2: React.FC = () => {
               <button onClick={() => navigate("/")}>📊 Dasbor</button>
             </li>
             <li>
-              <button onClick={() => navigate("/peraturanPenghuni3")}>
+              <button onClick={() => navigate("/peraturanPenghuni5")}>
                 ☑️ Peraturan Penghuni
               </button>
             </li>
             <li className="menu-section">Keuangan</li>
             <li>
-              <button onClick={() => navigate("/penghuniPembayaran3")}>
+              <button onClick={() => navigate("/penghuniPembayaran5")}>
                 💲 Pembayaran
               </button>
             </li>
             <li className="menu-section">Tugas</li>
             <li>
-              <button onClick={() => navigate("/penghuniTugas3")}>
+              <button onClick={() => navigate("/penghuniTugas5")}>
                 ✅ Tugas Saya
               </button>
             </li>
             <li className="menu-section">Chat</li>
             <li>
-              <button onClick={() => navigate("/penghuniChat3")}>
+              <button onClick={() => navigate("/penghuniChat5")}>
                 💬 ada yang ingin ditanyakan?
               </button>
             </li>
@@ -64,7 +64,7 @@ const PenghuniWelcome2: React.FC = () => {
           <div className="background">
             <h2>
               {" "}
-              <p>Selamat datang di platform penghuni kos2!</p>
+              <p>Selamat datang di platform penghuni kos5!</p>
             </h2>
           </div>
         </div>
@@ -73,4 +73,4 @@ const PenghuniWelcome2: React.FC = () => {
   );
 };
 
-export default PenghuniWelcome2;
+export default PenghuniWelcome5;

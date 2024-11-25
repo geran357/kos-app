@@ -6,7 +6,7 @@ type User = {
   id?: number;
   username: string;
   password: string;
-  name: string;
+  Nama: string; // Ganti name dengan Nama
   email: string;
   confirmed: boolean;
 };
@@ -16,7 +16,7 @@ const UserAndPass = () => {
   const [formData, setFormData] = useState<User>({
     username: "",
     password: "",
-    name: "",
+    Nama: "", // Ganti name dengan Nama
     email: "",
     confirmed: true, // Pastikan field "confirmed" sesuai dengan status akun
   });
@@ -27,6 +27,7 @@ const UserAndPass = () => {
     const fetchUsers = async () => {
       try {
         const response = await api.get("/users");
+        console.log(response.data); // Pastikan data mengandung field Nama
         setUsers(response.data); // Menyimpan data pengguna ke state
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -53,7 +54,7 @@ const UserAndPass = () => {
         username: formData.username,
         password: formData.password,
         email: formData.email,
-        name: formData.name,
+        Nama: formData.Nama, // Ganti name dengan Nama
         confirmed: formData.confirmed,
         role: 2, // Pastikan menggunakan ID role yang benar (misalnya, 2 untuk role "authenticated")
       };
@@ -67,7 +68,7 @@ const UserAndPass = () => {
       }
   
       // Reset form setelah berhasil
-      setFormData({ username: "", password: "", name: "", email: "", confirmed: true });
+      setFormData({ username: "", password: "", Nama: "", email: "", confirmed: true });
       setEditMode(false);
   
       // Ambil daftar pengguna yang diperbarui
@@ -129,8 +130,8 @@ const UserAndPass = () => {
           <label>Nama:</label>
           <input
             type="text"
-            name="name"
-            value={formData.name}
+            name="Nama" // Ganti name menjadi Nama
+            value={formData.Nama}
             onChange={handleInputChange}
             required
           />
@@ -158,7 +159,7 @@ const UserAndPass = () => {
           <tr>
             <th>Username</th>
             <th>Password</th>
-            <th>Nama</th>
+            <th>Nama</th> {/* Tambahkan Nama di sini */}
             <th>Email</th>
             <th>Konfirmasi</th>
             <th>Aksi</th>
@@ -169,7 +170,7 @@ const UserAndPass = () => {
             <tr key={user.id}>
               <td>{user.username}</td>
               <td>{user.password}</td>
-              <td>{user.name}</td>
+              <td>{user.Nama}</td> {/* Ganti name menjadi Nama */}
               <td>{user.email}</td>
               <td>{user.confirmed ? "Terkonfirmasi" : "Belum Terkonfirmasi"}</td>
               <td>
