@@ -41,11 +41,16 @@ const Home: React.FC = () => {
     return <p className="error-message">{error}</p>;
   }
 
+  // Filter kamar dengan nomor 1, 2, 3, 4
+  const selectedRooms = rooms.filter((room) =>
+    [1, 2, 3, 4].includes(room.no_kamar)
+  );
+
   return (
     <main>
       <h2>INFO-KAMAR</h2>
       <div className="room-grid">
-        {rooms.map((room: Room) => ( // Tentukan tipe untuk room
+        {selectedRooms.map((room: Room) => (
           <RoomCard
             key={room.id}
             roomNumber={room.no_kamar}

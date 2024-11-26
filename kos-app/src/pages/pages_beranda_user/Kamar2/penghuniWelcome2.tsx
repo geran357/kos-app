@@ -29,25 +29,25 @@ const PenghuniWelcome2: React.FC = () => {
               <button onClick={() => navigate("/")}>📊 Dasbor</button>
             </li>
             <li>
-              <button onClick={() => navigate("/peraturanPenghuni3")}>
+              <button onClick={() => navigate("/peraturanPenghuni2")}>
                 ☑️ Peraturan Penghuni
               </button>
             </li>
             <li className="menu-section">Keuangan</li>
             <li>
-              <button onClick={() => navigate("/penghuniPembayaran3")}>
+              <button onClick={() => navigate("/penghuniPembayaran2")}>
                 💲 Pembayaran
               </button>
             </li>
             <li className="menu-section">Tugas</li>
             <li>
-              <button onClick={() => navigate("/penghuniTugas3")}>
+              <button onClick={() => navigate("/penghuniTugas2")}>
                 ✅ Tugas Saya
               </button>
             </li>
             <li className="menu-section">Chat</li>
             <li>
-              <button onClick={() => navigate("/penghuniChat3")}>
+              <button onClick={() => navigate("/penghuniChat2")}>
                 💬 ada yang ingin ditanyakan?
               </button>
             </li>

@@ -56,7 +56,7 @@ const FAQs: React.FC = () => {
 
   // Fungsi untuk kembali ke beranda
   const handleBackToHome = () => {
-    navigate("/penghuniWelcome"); // Navigasi ke halaman beranda
+    navigate("/penghuniWelcome2"); // Navigasi ke halaman beranda
   };
 
   return (

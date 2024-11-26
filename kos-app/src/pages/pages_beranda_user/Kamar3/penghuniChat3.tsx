@@ -54,9 +54,9 @@ const FAQs2: React.FC = () => {
     setSelectedQuestion(selectedQuestion === index ? null : index); // Toggle jawabannya
   };
 
-  // Fungsi untuk kembali ke halaman /penghuniChat2
+  // Fungsi untuk kembali ke halaman sebelumnya
   const handleBackToHome = () => {
-    navigate("/penghuniChat2"); // Navigasi ke halaman /penghuniChat2
+    navigate(-1); // Kembali ke halaman sebelumnya
   };
 
   return (
@@ -75,7 +75,7 @@ const FAQs2: React.FC = () => {
   
       {/* Tombol Kembali ke Beranda */}
       <button className="back-to-home" onClick={handleBackToHome}>
-        Kembali ke Beranda
+        Kembali ke Halaman Sebelumnya
       </button>
     </div>
   );

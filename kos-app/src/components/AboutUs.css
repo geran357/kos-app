@@ -1,0 +1,136 @@
+/* Global Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+.about-us {
+  text-align: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Carousel Container */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  perspective: 1200px; /* Mengontrol efek 3D */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease-in-out;
+}
+
+.card {
+  position: absolute;
+  width: 260px; /* Lebar kartu */
+  height: 320px; /* Tinggi kartu */
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), -5px -5px 15px rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden; /* Sembunyikan sisi belakang */
+  transition: transform 0.8s ease-in-out, opacity 0.3s ease;
+  opacity: 0.3; /* Default buram */
+  z-index: 1;
+}
+
+.card.front {
+  opacity: 1; /* Kartu depan terlihat jelas */
+  z-index: 10; /* Kartu depan berada di atas */
+}
+
+.card h2 {
+  margin: 10px 0 5px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Efek Transformasi */
+.card:nth-child(1) {
+  transform: rotateY(0deg) translateZ(300px); /* Kartu utama di depan */
+  opacity: 1; /* Jelas */
+  z-index: 3; /* Prioritaskan agar tetap di atas */
+}
+.card:nth-child(2) {
+  transform: rotateY(-60deg) translateZ(200px); /* Kartu di sebelah kiri */
+  opacity: 0.5; /* Buram */
+  z-index: 2; /* Di bawah kartu utama */
+}
+.card:nth-child(3) {
+  transform: rotateY(60deg) translateZ(200px); /* Kartu di sebelah kanan */
+  opacity: 0.5; /* Buram */
+  z-index: 2; /* Di bawah kartu utama */
+}
+
+/* Navigation Buttons */
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  z-index: 20; /* Pastikan tombol berada di atas */
+}
+
+.nav-button:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.1);
+}
+
+.nav-button.prev {
+  left: 5%; /* Geser tombol ke kiri */
+}
+
+.nav-button.next {
+  right: 5%; /* Geser tombol ke kanan */
+}
+
+
+
+/* Gambar anggota tim */
+.card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}

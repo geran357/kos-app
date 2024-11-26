@@ -42,14 +42,15 @@ body {
 /* Grid Layout for Rooms */
 .room-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  justify-items: center;
+  grid-template-columns: repeat(2, 1fr); /* Membuat grid 2 kolom */
+  gap: 20px; /* Jarak antar elemen */
+  justify-items: center; /* Elemen di tengah grid */
   margin-top: 20px;
-  max-width: 1200px; /* Menentukan lebar maksimum */
-  width: 100%; /* Lebar penuh */
-  margin: 0 auto; /* Centering */
+  max-width: 800px; /* Lebar maksimum untuk grid */
+  width: 100%; /* Lebar penuh untuk responsif */
+  margin: 0 auto; /* Centering secara horizontal */
 }
+
 
 /* Footer Wrapper */
 .footer-wrapper {
