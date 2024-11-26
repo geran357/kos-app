@@ -28,11 +28,25 @@ const Login2: React.FC = () => {
       return;
     }
 
-    const role = result.userData.role;
-    console.log("User role:", role); // Debug log
+    const user = result.userData;
 
-    // Jika login berhasil, arahkan pengguna ke halaman tertentu
-    navigate("/adminPage"); // Ganti dengan route yang sesuai
+    if (!user.Nama) {
+      // Jika Nama tidak ditemukan, tampilkan peringatan
+      alert("Hubungi pemilik kosan untuk memperbaiki akun.");
+      setLoading(false);
+      return;
+    }
+
+    console.log("User Nama:", user.Nama); // Debug log Nama
+
+    // Jika login berhasil dan Nama adalah Admin
+    if (user.Nama.toLowerCase() === "admin") {
+      navigate("/adminPage"); // Arahkan ke halaman Admin
+    } else {
+      alert("Anda tidak memiliki hak akses Admin.");
+    }
+
+    setLoading(false); // Selesai loading
   };
 
   const handleForgotPassword = (): void => {

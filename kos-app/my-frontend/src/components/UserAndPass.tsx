@@ -6,7 +6,7 @@ type User = {
   id?: number;
   username: string;
   password: string;
-  Nama: string; // Ganti name dengan Nama
+  Nama: string;
   email: string;
   confirmed: boolean;
 };
@@ -27,7 +27,7 @@ const UserAndPass = () => {
     const fetchUsers = async () => {
       try {
         const response = await api.get("/users");
-        console.log(response.data); // Pastikan data mengandung field Nama
+        console.log(response.data); // Memastikan data mengandung field Nama
         setUsers(response.data); // Menyimpan data pengguna ke state
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -102,7 +102,7 @@ const UserAndPass = () => {
 
       {/* Peringatan */}
       <div className="warning-box">
-        <p><strong>PERHATIAN:</strong> Gunakan "Nama" sesuai dengan kamar yang akan diisi, karena itu akan mempengaruhi , contoh penggunaan "Nama: kamar2".</p>
+        <p><strong>PERHATIAN:</strong> Gunakan "Nama" sesuai dengan kamar yang akan diisi, karena itu akan mempengaruhi logika login, contoh penggunaan "Nama: kamar2".</p>
       </div>
 
       <form onSubmit={handleAddOrUpdateUser}>
