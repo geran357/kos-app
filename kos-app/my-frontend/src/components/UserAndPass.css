@@ -120,3 +120,18 @@ tr:hover {
   background-color: #c0392b; /* Merah gelap saat hover */
   transform: scale(1.1); /* Efek zoom saat hover */
 }
+
+/* Kotak peringatan */
+.warning-box {
+  background-color: #f8d7da; /* Warna latar belakang merah muda */
+  color: #721c24; /* Warna teks merah gelap */
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #f5c6cb; /* Garis perbatasan merah muda */
+  border-radius: 5px;
+}
+
+.warning-box p {
+  margin: 0;
+  font-weight: bold;
+}

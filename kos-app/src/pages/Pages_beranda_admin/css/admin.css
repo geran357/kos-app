@@ -112,8 +112,7 @@ body {
   .welcome-container {
     display: flex;
     height: 100vh;
-    background-image: url('https://c4.wallpaperflare.com/wallpaper/878/845/208/sofa-skyscraper-interior-skyscraper-wallpaper-preview.jpg');
-    background-size: cover;  /* Agar gambar menutupi seluruh elemen */
-    background-position: center;  /* Agar gambar berada di tengah */
-    background-repeat: no-repeat;  /* Menghindari pengulangan gambar */
+    background: linear-gradient(45deg, #003366, #006699, #0099cc, #66ccff);  /* 4 gradien biru */
+    background-size: 400% 400%;  /* Agar gradasi terlihat lebih halus */
+    animation: gradientAnimation 10s ease infinite; /* Animasi pergerakan gradien */
   }

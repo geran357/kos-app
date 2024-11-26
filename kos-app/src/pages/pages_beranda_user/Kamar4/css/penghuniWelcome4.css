@@ -112,7 +112,6 @@ button:hover {
 .welcome-container {
   display: flex;
   height: 100vh;
-  background-image: url('https://c4.wallpaperflare.com/wallpaper/449/768/989/illustration-gradient-stars-meteors-wallpaper-preview.jpg');
   background-size: cover;  /* Agar gambar menutupi seluruh elemen */
   background-position: center;  /* Agar gambar berada di tengah */
   background-repeat: no-repeat;  /* Menghindari pengulangan gambar */

@@ -1,29 +1,34 @@
 import React, { useState } from "react";
 import "./AboutUs.css";
+import fajarImage from '../assets/IMG_20241126_105910.jpg'
+import akbarImage from '../assets/IMG-20240724-WA0000.jpg'
+import fannyImage from '../assets/IMG-20241125-WA0027.jpg'
 
 const AboutUs = () => {
   const team = [
     {
-      name: "Alice",
-      role: "Frontend Developer",
-      description: "Mengembangkan UI/UX untuk memastikan pengalaman pengguna yang baik.",
-      image: "https://randomuser.me/api/portraits/women/1.jpg", // Gambar Alice
+      name: "Fanny Maharani",
+      role: "Menganalisis fitur dan menyusun mockup untuk tampilan website",
+      description: "menggabungkan keahlian dalam analisis kebutuhan pengguna dan desain antarmuka pengguna (UI) untuk merancang dan mengembangkan tampilan website yang fungsional dan menarik. Tugas utamanya adalah memahami fitur yang dibutuhkan oleh pengguna atau klien dan mentransformasikannya menjadi desain yang dapat digunakan oleh pengembang untuk implementasi.",
+      image:fannyImage, 
     },
     {
       name: "Fajar Geran Arifin",
-      role: "Backend Developer",
-      description: "Membangun server, database, dan API untuk mendukung aplikasi.",
-      image: "https://randomuser.me/api/portraits/men/1.jpg", // Gambar Bob
+      role: "Backend Developer dan front end",
+      description: "saya menggabungkan kekuatan dari dua aspek utama dalam pengembangan aplikasi: sisi server dan sisi pengguna. Di bagian backend, saya bertanggung jawab untuk membangun dan mengelola server, database, dan API, memastikan data dikelola dengan efisien dan aman. Di sisi frontend, saya fokus pada menciptakan pengalaman pengguna yang memukau dengan desain antarmuka yang responsif dan interaktif. Dengan keterampilan di kedua bidang ini, saya mampu mengembangkan aplikasi secara menyeluruh, memastikan kinerja yang optimal dan tampilan yang menarik bagi pengguna.",
+      image:fajarImage ,
+
     },
     {
-      name: "Charlie",
-      role: "UI/UX Designer",
-      description: "Merancang wireframe dan prototipe untuk antarmuka pengguna.",
-      image: "https://randomuser.me/api/portraits/men/2.jpg", // Gambar Charlie
+      name: "M Akbar Hidayatulloh",
+      role: "membantu front end dalam merapihkan website, dan merapihkan tampilan mockup",
+      description: "saya membantu tim frontend dalam merapikan dan mengoptimalkan tampilan website agar lebih rapi dan fungsional. Saya memastikan bahwa elemen-elemen desain pada website sesuai dengan pedoman yang telah ditentukan pada mockup, serta memastikan responsivitas dan konsistensi tampilan di berbagai perangkat. Selain itu, saya juga turut membantu mengimplementasikan dan menyempurnakan aspek visual dan interaksi di frontend untuk memberikan pengalaman pengguna yang lebih baik. Fokus utama saya adalah memastikan bahwa desain yang telah dipersiapkan dalam bentuk mockup diterjemahkan dengan baik ke dalam tampilan website yang fungsional dan menarik.",
+      image:akbarImage, 
     },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // Default currentIndex diatur ke 1 (kartu "Fajar Geran Arifin")
+  const [currentIndex, setCurrentIndex] = useState(1);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % team.length);
@@ -45,7 +50,7 @@ const AboutUs = () => {
         <div className="carousel">
           {team.map((member, index) => {
             const position =
-              (index - currentIndex + team.length) % team.length; // Posisi relatif kartu
+              (index - currentIndex + team.length) % team.length; // Hitung posisi relatif
             return (
               <div
                 key={index}
@@ -66,7 +71,10 @@ const AboutUs = () => {
           &#x276F;
         </button>
       </div>
-      
+      <div className="description">
+        <h3>{team[currentIndex].name}</h3>
+        <p>{team[currentIndex].description}</p>
+      </div>
     </div>
   );
 };

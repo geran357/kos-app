@@ -78,7 +78,6 @@ const UserAndPass = () => {
       console.error("Error adding/updating user:", error);
     }
   };
-  
 
   // Mengedit pengguna
   const handleEdit = (user: User) => {
@@ -100,6 +99,11 @@ const UserAndPass = () => {
   return (
     <div className="container">
       <h1>Manajemen Pengguna dan Password</h1>
+
+      {/* Peringatan */}
+      <div className="warning-box">
+        <p><strong>PERHATIAN:</strong> Gunakan "Nama" sesuai dengan kamar yang akan diisi, karena itu akan mempengaruhi , contoh penggunaan "Nama: kamar2".</p>
+      </div>
 
       <form onSubmit={handleAddOrUpdateUser}>
         <h2>{editMode ? "Edit Pengguna" : "Tambah Pengguna Baru"}</h2>
@@ -177,7 +181,7 @@ const UserAndPass = () => {
                 <button className="action-button" onClick={() => handleEdit(user)}>
                   Edit
                 </button>
-                <button className="action-button" onClick={() => handleDelete(user.id!)}>
+                <button className="action-button" onClick={() => handleDelete(user.id!)} >
                   Hapus
                 </button>
               </td>

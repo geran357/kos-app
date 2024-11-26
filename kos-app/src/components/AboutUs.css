@@ -4,18 +4,20 @@ body {
   margin: 0;
   padding: 0;
   background: #f5f5f5;
-  overflow: hidden;
+  overflow: auto; /* Pastikan halaman bisa di-scroll */
 }
 
 .about-us {
   text-align: center;
   padding: 20px;
+  overflow: auto; /* Jika bagian ini tidak bisa di-scroll, tambahkan overflow */
 }
 
 .title {
   font-size: 2.5rem;
   color: #333;
   margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 /* Carousel Container */
@@ -27,7 +29,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: auto; /* Pastikan carousel dapat di-scroll jika diperlukan */
 }
 
 .carousel {
@@ -45,7 +47,7 @@ body {
   position: absolute;
   width: 260px; /* Lebar kartu */
   height: 320px; /* Tinggi kartu */
-  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  background: linear-gradient(145deg, #003366, #66ccff);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), -5px -5px 15px rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   text-align: center;
@@ -72,7 +74,7 @@ body {
 
 .card p {
   font-size: 1rem;
-  color: #666;
+  color: #ffffff;
 }
 
 /* Efek Transformasi */
@@ -97,7 +99,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #fff;
+  background-color: #000000;
   border: none;
   border-radius: 50%;
   font-size: 2rem;
@@ -125,12 +127,32 @@ body {
   right: 5%; /* Geser tombol ke kanan */
 }
 
-
-
 /* Gambar anggota tim */
 .card img {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   margin-bottom: 15px;
+  object-fit: cover;
 }
+
+/* Deskripsi Anggota Tim */
+.description {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.description h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.description p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
