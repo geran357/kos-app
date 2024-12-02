@@ -12,6 +12,7 @@ const Login: React.FC = () => {
 
   const handleLogin = async (): Promise<void> => {
     if (!identifier || !password) {
+      // Validasi jika username atau password kosong
       setError("Username atau Password harus diisi.");
       return;
     }
@@ -20,13 +21,21 @@ const Login: React.FC = () => {
     const result = await loginUser(identifier, password); // Panggil loginUser
 
     if (result.error) {
-      setError(result.error);
+      // Menangani error umum dari login
+      if (result.error === "username") {
+        setError("Username tidak ditemukan.");
+      } else if (result.error === "password") {
+        setError("Password salah.");
+      } else {
+        setError(result.error); // Pesan error lain yang tidak terduga
+      }
       setLoading(false);
       return;
     }
 
     const user = result.userData;
     if (!user.Nama) {
+      // Jika Nama kosong, arahkan pengguna untuk memperbaiki akun
       alert("Hubungi pemilik kosan untuk memperbaiki akun.");
       setLoading(false);
       return;
@@ -64,8 +73,11 @@ const Login: React.FC = () => {
 
   return (
     <div className="login-container">
-      <h2 className="login-title">Login</h2>
-      {error && <p className="error-message">{error}</p>}
+      <div className="judul">
+        <h2 className="login-title">Login penghuni kamar</h2>
+      </div>
+      {error && <p className="error-message">{error}</p>}{" "}
+      {/* Menampilkan pesan error */}
       <div className="input-container">
         <div className="icon">
           <img

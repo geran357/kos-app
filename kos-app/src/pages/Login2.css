@@ -1,116 +1,116 @@
 /* Umum */
 body {
-    margin: 0;
-    font-family: "Arial", sans-serif;
-    background-color: #f5f5f5;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Kontainer Login */
+.login2-container {
+  width: 500px;
+  padding: 20px;
+  margin: 117px auto;
+  background-color: #f0f4f8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Judul */
+.judul .login2-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #007bff; /* Mengubah warna menjadi biru */
+}
+
+/* Input Fields */
+.login2-input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.login2-icon {
+  margin-right: 10px;
+}
+
+.login2-input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Button */
+.login2-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0ea47a;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* Style untuk Spinner */
+.login2-loading-spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  /* Kontainer Login */
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Disabled Button */
+.login2-button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+/* Forgot Password */
+.login2-forgot-password {
+  margin-top: 20px;
+  color: #ff0000;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Error Message */
+.login2-error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Responsif */
+@media (max-width: 480px) {
   .login2-container {
-    width: 500px;
-    padding: 20px;
-    margin: 117px auto;
-    background-color: #f0f4f8;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    width: 90%;
   }
-  
+
   .login2-title {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
+    font-size: 20px;
   }
-  
-  /* Input Fields */
-  .login2-input-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    padding: 10px;
-  }
-  
-  .login2-icon {
-    margin-right: 10px;
-  }
-  
-  .login2-input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    outline: none;
-    font-size: 14px;
-    color: #333;
-  }
-  
-  /* Button */
+
   .login2-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #0ea47a;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  
-  /* Style untuk Spinner */
-  .login2-loading-spinner {
-    border: 3px solid #f3f3f3;
-    border-top: 3px solid #3498db;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    animation: spin 2s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  /* Disabled Button */
-  .login2-button:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
-  }
-  
-  /* Forgot Password */
-  .login2-forgot-password {
-    margin-top: 20px;
-    color: #ff0000;
     font-size: 14px;
-    cursor: pointer;
   }
-  
-  /* Error Message */
-  .login2-error-message {
-    color: red;
-    font-size: 14px;
-    margin-bottom: 15px;
-  }
-  
-  /* Responsif */
-  @media (max-width: 480px) {
-    .login2-container {
-      width: 90%;
-    }
-  
-    .login2-title {
-      font-size: 20px;
-    }
-  
-    .login2-button {
-      font-size: 14px;
-    }
-  }
-  
+}

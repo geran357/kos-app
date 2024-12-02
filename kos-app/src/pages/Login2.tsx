@@ -12,6 +12,7 @@ const Login2: React.FC = () => {
 
   const handleLogin = async (): Promise<void> => {
     if (!identifier || !password) {
+      // Validasi input jika username atau password kosong
       setError("Username atau Password harus diisi.");
       return;
     }
@@ -21,9 +22,15 @@ const Login2: React.FC = () => {
     // Panggil fungsi loginUser untuk autentikasi
     const result = await loginUser(identifier, password);
 
-    // Jika ada error, tampilkan pesan error
     if (result.error) {
-      setError(result.error);
+      // Menangani error jika login gagal
+      if (result.error === "username") {
+        setError("Username tidak ditemukan.");
+      } else if (result.error === "password") {
+        setError("Password salah.");
+      } else {
+        setError("Terjadi kesalahan, coba lagi nanti.");
+      }
       setLoading(false); // Selesai loading
       return;
     }
@@ -31,17 +38,16 @@ const Login2: React.FC = () => {
     const user = result.userData;
 
     if (!user.Nama) {
-      // Jika Nama tidak ditemukan, tampilkan peringatan
+      // Jika Nama kosong, arahkan ke perbaikan akun
       alert("Hubungi pemilik kosan untuk memperbaiki akun.");
       setLoading(false);
       return;
     }
 
-    console.log("User Nama:", user.Nama); // Debug log Nama
-
-    // Jika login berhasil dan Nama adalah Admin
+    // Menambahkan pengecekan untuk admin login
     if (user.Nama.toLowerCase() === "admin") {
-      navigate("/adminPage"); // Arahkan ke halaman Admin
+      // Jika Nama adalah "admin", arahkan ke halaman admin
+      navigate("/adminPage");
     } else {
       alert("Anda tidak memiliki hak akses Admin.");
     }
@@ -55,8 +61,11 @@ const Login2: React.FC = () => {
 
   return (
     <div className="login2-container">
-      <h2 className="login2-title">Login2</h2>
-      {error && <p className="login2-error-message">{error}</p>}
+      <div className="judul">
+        <h2 className="login2-title">Login sebagai admin</h2>
+      </div>
+      {error && <p className="login2-error-message">{error}</p>}{" "}
+      {/* Menampilkan pesan error */}
       <div className="login2-input-container">
         <div className="login2-icon">
           <img
@@ -69,7 +78,7 @@ const Login2: React.FC = () => {
           placeholder="Masukkan Username atau Email"
           className="login2-input"
           value={identifier}
-          onChange={(e) => setIdentifier(e.target.value)}
+          onChange={(e) => setIdentifier(e.target.value)} // Memperbarui state identifier
         />
       </div>
       <div className="login2-input-container">
@@ -84,7 +93,7 @@ const Login2: React.FC = () => {
           placeholder="Masukkan Password Anda"
           className="login2-input"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)} // Memperbarui state password
         />
       </div>
       <button
@@ -92,7 +101,8 @@ const Login2: React.FC = () => {
         onClick={handleLogin}
         disabled={loading}
       >
-        {loading ? <div className="login2-loading-spinner"></div> : "Login"}
+        {loading ? <div className="login2-loading-spinner"></div> : "Login"}{" "}
+        {/* Menampilkan spinner jika loading */}
       </button>
       <p className="login2-forgot-password" onClick={handleForgotPassword}>
         Lupa Password?

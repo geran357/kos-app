@@ -123,7 +123,7 @@ const App: React.FC = () => {
         </Routes>
         <div className="footer-wrapper">
           <footer className="footer">
-            <p>MiminKost | 0123456789 // Putri Pemilik</p>
+            <p>MiminKost | +62 877-6421-8008 // Putri Pemilik</p>
           </footer>
         </div>
       </div>

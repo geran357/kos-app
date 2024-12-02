@@ -48,7 +48,7 @@ const Home: React.FC = () => {
 
   return (
     <main>
-      <h2>INFO-KAMAR</h2>
+      <div className="Tittle"><h2>INFO-KAMAR</h2></div>
       <div className="room-grid">
         {selectedRooms.map((room: Room) => (
           <RoomCard

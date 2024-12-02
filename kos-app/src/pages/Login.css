@@ -32,10 +32,10 @@ button:hover {
   text-align: center;
 }
 
-.login-title {
+.judul .login-title {
   margin-bottom: 20px;
   font-size: 24px;
-  color: #333;
+  color: #007bff; /* Mengubah warna menjadi biru */
 }
 
 /* Input Fields */

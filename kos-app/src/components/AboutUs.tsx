@@ -15,7 +15,7 @@ const AboutUs = () => {
     {
       name: "Fajar Geran Arifin",
       role: "Front end dan back end developer",
-      description: "saya menggabungkan kekuatan dari dua aspek utama dalam pengembangan aplikasi: sisi server dan sisi pengguna. Di bagian backend, saya bertanggung jawab untuk membangun dan mengelola server, database, dan API, memastikan data dikelola dengan efisien dan aman. Di sisi frontend, saya fokus pada menciptakan pengalaman pengguna yang memukau dengan desain antarmuka yang responsif dan interaktif. Dengan keterampilan di kedua bidang ini, saya mampu mengembangkan aplikasi secara menyeluruh, memastikan kinerja yang optimal dan tampilan yang menarik bagi pengguna.",
+      description: "sebagai full-stack developer, saya menggabungkan kekuatan dari dua aspek utama dalam pengembangan aplikasi: sisi server dan sisi pengguna. Di bagian backend, saya bertanggung jawab untuk membangun dan mengelola server, database, dan API, memastikan data dikelola dengan efisien dan aman. Di sisi frontend, saya fokus pada menciptakan pengalaman pengguna yang memukau dengan desain antarmuka yang responsif dan interaktif. Dengan keterampilan di kedua bidang ini, saya mampu mengembangkan aplikasi secara menyeluruh, memastikan kinerja yang optimal dan tampilan yang menarik bagi pengguna.",
       image:fajarImage ,
 
     },
